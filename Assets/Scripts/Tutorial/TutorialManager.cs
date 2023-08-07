@@ -7,22 +7,29 @@ public class TutorialManager : MonoBehaviour
 {
     [Header("Popup GameObjects")]
     [SerializeField] private GameObject gameDescriptionGameObject;
-    [SerializeField] private GameObject controlsDisplayGameObject;
+    [SerializeField] private GameObject drivingControlsDisplayGameObject;
+    [SerializeField] private GameObject serveControlsDisplayGameObject;
 
     [Header("Descriptions")]
     [Space(10)]
     [SerializeField] private TextMeshProUGUI gameDescriptionText;
-    [SerializeField] private TextMeshProUGUI controlsDescriptionText;
+    [SerializeField] private TextMeshProUGUI drivingControlsDescriptionText;
+    [SerializeField] private TextMeshProUGUI serveControlsDescriptionText;
 
-    private CanvasGroup controlsCanvasGroup;
-    private bool hasPopupBeenDisplayed;
+    private CanvasGroup drivingControlsCanvasGroup;
+    private CanvasGroup serveControlsCanvasGroup;
+
+    private bool hasDrivingControlPopupBeenDisplayed;
+    private bool hasServeControlPopupBeenDisplayed;
 
     private void Start()
     {
         gameDescriptionGameObject.SetActive(false);
-        controlsDisplayGameObject.SetActive(false);
+        drivingControlsDisplayGameObject.SetActive(false);
+        serveControlsDisplayGameObject.SetActive(false);
 
-        controlsCanvasGroup = controlsDisplayGameObject.GetComponent<CanvasGroup>();
+        drivingControlsCanvasGroup = drivingControlsDisplayGameObject.GetComponent<CanvasGroup>();
+        serveControlsCanvasGroup = serveControlsDisplayGameObject.GetComponent<CanvasGroup>();
     }
 
     //change to events later on
@@ -31,12 +38,30 @@ public class TutorialManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
             DisplayPopup(gameDescriptionGameObject, gameDescriptionText);
 
-        if (Input.GetKeyDown(KeyCode.L))
-            DisplayPopup(controlsDisplayGameObject, controlsDescriptionText);
+        if (Input.GetKeyDown(KeyCode.L) && !hasDrivingControlPopupBeenDisplayed)
+        {
+            DisplayPopup(drivingControlsDisplayGameObject, drivingControlsDescriptionText);
+            hasDrivingControlPopupBeenDisplayed = true;
+        }
 
-        if (!hasPopupBeenDisplayed && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
-            || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
-            StartCoroutine(FadeOutPopup(controlsCanvasGroup));
+        if (Input.GetKeyDown(KeyCode.J) && !hasServeControlPopupBeenDisplayed)
+        {
+            DisplayPopup(serveControlsDisplayGameObject, serveControlsDescriptionText);
+            hasServeControlPopupBeenDisplayed = true;
+        }
+            
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
+            || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            if (hasDrivingControlPopupBeenDisplayed)
+                StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup));
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (hasServeControlPopupBeenDisplayed)
+                StartCoroutine(FadeOutPopup(serveControlsCanvasGroup));
+        }
     }
 
     private void DisplayText(GameObject popup, string text)
@@ -55,8 +80,6 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator FadeOutPopup(CanvasGroup canvasGroup)
     {
-        hasPopupBeenDisplayed = true;
-
         yield return new WaitForSeconds(2f);
 
         canvasGroup.alpha = 1f;
