@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 209ebf22b8f2ab64b9350d3985fa91e2
+guid: bee4b92897cca2e47ba28b5932877054
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8004778895663109532
-    second: UI_Buttons_Updated_0
+      213: 8298403541967142903
+    second: arrow_keys_WASD_0
   - first:
-      213: 2661933666851743992
-    second: UI_Buttons_Updated_1
+      213: -101120985231445028
+    second: arrow_keys_WASD_1
   - first:
-      213: -2333400502282752034
-    second: UI_Buttons_Updated_2
+      213: 8695636089047747357
+    second: arrow_keys_WASD_2
+  - first:
+      213: 4759057364931202101
+    second: arrow_keys_WASD_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Buttons_Updated_0
+      name: arrow_keys_WASD_0
       rect:
         serializedVersion: 2
-        x: 62
-        y: 297
-        width: 375
-        height: 125
+        x: 262
+        y: 357
+        width: 90
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +117,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c951b859effa61f60800000000000000
-      internalID: 8004778895663109532
+      spriteID: 7ff7bc9fd0ad92370800000000000000
+      internalID: 8298403541967142903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Buttons_Updated_1
+      name: arrow_keys_WASD_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 156
-        width: 374
-        height: 125
+        x: 128
+        y: 268
+        width: 137
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f8e954019611f420800000000000000
-      internalID: 2661933666851743992
+      spriteID: cd331fbeffeb89ef0800000000000000
+      internalID: -101120985231445028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Buttons_Updated_2
+      name: arrow_keys_WASD_2
       rect:
         serializedVersion: 2
-        x: 63
-        y: 16
-        width: 374
-        height: 124
+        x: 265
+        y: 212
+        width: 87
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +159,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edfe7b62b981e9fd0800000000000000
-      internalID: -2333400502282752034
+      spriteID: d1b02c793fa1da870800000000000000
+      internalID: 8695636089047747357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrow_keys_WASD_3
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 268
+        width: 145
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c4e6675719b0240800000000000000
+      internalID: 4759057364931202101
       vertices: []
       indices: 
       edges: []

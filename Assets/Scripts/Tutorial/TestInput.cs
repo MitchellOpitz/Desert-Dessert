@@ -1,15 +1,14 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TutorialPlayerInput : MonoBehaviour
+public class TestInput : MonoBehaviour
 {
     private bool[] wasdPressed = new bool[4];
 
-    private bool wasMouseButtonClicked;
-
     public event Action OnAllKeysPressed;
-    public event Action OnMouseButtonClicked;
 
     public void OnMovement(InputAction.CallbackContext context)
     {
@@ -29,24 +28,14 @@ public class TutorialPlayerInput : MonoBehaviour
             if (movement.x > 0 && !wasdPressed[3])
                 wasdPressed[3] = true;
 
-            if (AllKeysPressed())
+            if (HaveAllKeysBeenPressed())
                 OnAllKeysPressed?.Invoke();
+
         }
     }
 
-    public bool AllKeysPressed() => wasdPressed[0] && wasdPressed[1] && wasdPressed[2] && wasdPressed[3];
-
-    public void OnServe(InputAction.CallbackContext context)
+    public bool HaveAllKeysBeenPressed()
     {
-        if (context.performed) 
-        {
-            wasMouseButtonClicked = true;
-
-            if (MouseButtonClicked())
-                OnMouseButtonClicked?.Invoke();
-        }
+       return wasdPressed[0] && wasdPressed[1] && wasdPressed[2] && wasdPressed[3];
     }
-
-    public bool MouseButtonClicked() => wasMouseButtonClicked;
 }
-
