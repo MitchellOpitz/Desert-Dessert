@@ -5,12 +5,7 @@ using UnityEngine;
 public class RoadGeneration : MonoBehaviour
 {
     [Header("Generation Parameters")]
-    [SerializeField] float RightProbability;
-    [SerializeField] float LeftProbability;
-
-    [Space]
-
-    [SerializeField] float BranchPossibility;
+    [SerializeField] float TurnProbability;
 
     [Header("Sizes")]
     [SerializeField] Vector2 TileSize;
@@ -19,96 +14,56 @@ public class RoadGeneration : MonoBehaviour
 
     [Header("Transforms")]
     [SerializeField] Transform EndTransform;
-    [SerializeField] Vector3 CurrentRoadPosition;
 
     [Header("Prefabs")]
     [SerializeField] GameObject StraightRoadPrefab;
-    [SerializeField] GameObject LeftRoadPrefab;
-    [SerializeField] GameObject RightRoadPrefab;
+    [SerializeField] GameObject RightTurnPrefab;
+    [SerializeField] GameObject LeftTurnPrefab;
 
-    Vector2 StartPosition; Vector2 EndPosition;
+    Vector3 CurrentRoadPosition;
+    Vector2 EndPosition;
 
-    List<Vector3> RoadPositions = new List<Vector3>();
+    float CurrentRoadRotation; // Change type from Vector3 to float
+
+    // Direction changes based on rotation angles
+    Dictionary<float, Vector3> DirectionChanges = new Dictionary<float, Vector3>()
+    {
+        { 0f, Vector3.up },    // Facing up
+        { 90f, Vector3.right }, // Facing right
+        { 180f, Vector3.down }, // Facing down
+        { 270f, Vector3.left }  // Facing left
+    };
 
     void Start()
     {
         InitialiseRoad();
     }
 
-    void Update()
-    {
+    void Update() {
         GenerateRoad();
     }
 
     void InitialiseRoad()
     {
+        // Calculate the end position based on map size and tile size
         EndPosition.x = Random.Range(MinMapSize, MaxMapSize);
         EndPosition.y = Random.Range(MinMapSize, MaxMapSize);
-
         EndPosition *= TileSize;
         EndTransform.position = EndPosition;
 
-        CurrentRoadPosition = Vector3.zero; // Reset current position
-        RoadPositions.Clear(); // Clear existing road positions
-        RoadPositions.Add(CurrentRoadPosition); // Add the starting position
+        // Reset the road generation position to the start
+        CurrentRoadPosition = transform.position;
+        CurrentRoadRotation = 0f; // Change type from Vector3 to float
     }
 
     void GenerateRoad()
     {
-        if (CurrentRoadPosition.y + TileSize.y <= EndPosition.y)
+        if (CurrentRoadPosition.y > EndPosition.y)
         {
-            CurrentRoadPosition += new Vector3(CurrentRoadPosition.x, TileSize.y, 0);
-
-            float RandomValue = Random.value;
-
-            if (RandomValue < RightProbability)
-            {
-                GenerateBranch(1, RightRoadPrefab);
-            }
-            else if (RandomValue < LeftProbability + RightProbability)
-            {
-                GenerateBranch(-1, LeftRoadPrefab);
-            }
-            else
-            {
-                Instantiate(StraightRoadPrefab, CurrentRoadPosition, Quaternion.identity);
-            }
-        }
-    }
-
-    void GenerateBranch(int Direction, GameObject BranchPrefab)
-    {
-        Vector3 BranchPosition = CurrentRoadPosition + new Vector3(TileSize.x * Direction, TileSize.y, 0);
-
-        // Check for collisions with existing roads
-        bool CanPlaceBranch = true;
-        foreach (Vector3 Position in RoadPositions)
-        {
-            if (Vector3.Distance(BranchPosition, Position) < TileSize.x)
-            {
-                CanPlaceBranch = false;
-                break;
-            }
+            return;
         }
 
-        if (CanPlaceBranch)
-        {
-            Instantiate(BranchPrefab, BranchPosition, Quaternion.identity);
-            RoadPositions.Add(BranchPosition);
-            GenerateRoadFromBranch(BranchPosition);
-        }
-    }
-
-    void GenerateRoadFromBranch(Vector3 BranchPosition)
-    {
-        Vector3 DirectionToEndpoint = ((Vector3)EndPosition - BranchPosition).normalized;
-        Vector3 CurrentPos = BranchPosition;
-
-        while (Vector3.Distance(CurrentPos, EndPosition) > TileSize.y)
-        {
-            CurrentPos += DirectionToEndpoint * TileSize.y;
-            Instantiate(StraightRoadPrefab, CurrentPos, Quaternion.identity);
-            RoadPositions.Add(CurrentPos);
-        }
+        Instantiate(StraightRoadPrefab, CurrentRoadPosition, Quaternion.Euler(0, 0, -CurrentRoadRotation));
+        CurrentRoadPosition += DirectionChanges[CurrentRoadRotation] * TileSize.y;
     }
 }
