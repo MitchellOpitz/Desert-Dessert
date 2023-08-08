@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -22,19 +21,38 @@ public class TutorialManager : MonoBehaviour
     private bool hasDrivingControlPopupBeenDisplayed;
     private bool hasServeControlPopupBeenDisplayed;
 
+    [SerializeField] private TutorialPlayerInput tutorialPlayerInput;
+
     private void Start()
     {
-        gameDescriptionGameObject.SetActive(false);
-        drivingControlsDisplayGameObject.SetActive(false);
-        serveControlsDisplayGameObject.SetActive(false);
+        gameDescriptionGameObject.SetActive(true);
+
+        drivingControlsDisplayGameObject.SetActive(true);
+        hasDrivingControlPopupBeenDisplayed = true; //move later to when popup is displayed
+
+        serveControlsDisplayGameObject.SetActive(true);
+        hasServeControlPopupBeenDisplayed = true; //move later to when popup is displayed
 
         drivingControlsCanvasGroup = drivingControlsDisplayGameObject.GetComponent<CanvasGroup>();
         serveControlsCanvasGroup = serveControlsDisplayGameObject.GetComponent<CanvasGroup>();
     }
 
+    private void OnEnable()
+    {
+        tutorialPlayerInput.OnKeyPressed += FadeOutDrivingTutorial;
+        tutorialPlayerInput.OnMouseButtonClicked += FadeOutServeTutorial;
+    }
+
+    private void OnDisable()
+    {
+        tutorialPlayerInput.OnKeyPressed -= FadeOutDrivingTutorial;
+        tutorialPlayerInput.OnMouseButtonClicked -= FadeOutServeTutorial;
+    }
+
     //change to events later on
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.K))
             DisplayPopup(gameDescriptionGameObject, gameDescriptionText);
 
@@ -49,21 +67,22 @@ public class TutorialManager : MonoBehaviour
             DisplayPopup(serveControlsDisplayGameObject, serveControlsDescriptionText);
             hasServeControlPopupBeenDisplayed = true;
         }
-            
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
-            || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        {
-            if (hasDrivingControlPopupBeenDisplayed)
-                StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup));
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (hasServeControlPopupBeenDisplayed)
-                StartCoroutine(FadeOutPopup(serveControlsCanvasGroup));
-        }
+        */
     }
 
+    private void FadeOutDrivingTutorial()
+    {
+        if (tutorialPlayerInput.KeyPressed() && hasDrivingControlPopupBeenDisplayed)
+            StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup));
+    }
+
+    private void FadeOutServeTutorial()
+    {
+        if (tutorialPlayerInput.MouseButtonClicked() && hasServeControlPopupBeenDisplayed)
+            StartCoroutine(FadeOutPopup(serveControlsCanvasGroup));
+    }
+
+    //may not be needed as text is not currently changing
     private void DisplayText(GameObject popup, string text)
     {
         if (popup != null)
