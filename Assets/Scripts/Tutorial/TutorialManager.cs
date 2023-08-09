@@ -11,8 +11,6 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Descriptions")]
     [Space(10)]
-    [SerializeField] private TextMeshProUGUI firstLetterText;
-    [SerializeField] private TextMeshProUGUI secondLetterText;
     [SerializeField] private TextMeshProUGUI drivingControlsDescriptionText;
     [SerializeField] private TextMeshProUGUI serveControlsDescriptionText;
 
@@ -26,13 +24,13 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        gameDescriptionGameObject.SetActive(true);
+        DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
 
-        drivingControlsDisplayGameObject.SetActive(false);
-        hasDrivingControlPopupBeenDisplayed = false; //move later to when popup is displayed and set true
+        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
+        hasDrivingControlPopupBeenDisplayed = true;
 
-        serveControlsDisplayGameObject.SetActive(false);
-        hasServeControlPopupBeenDisplayed = false; //move later to when popup is displayed and set true
+        DisplayPopup(serveControlsDisplayGameObject); //do this after serve scene transition
+        hasServeControlPopupBeenDisplayed = true;
 
         drivingControlsCanvasGroup = drivingControlsDisplayGameObject.GetComponent<CanvasGroup>();
         serveControlsCanvasGroup = serveControlsDisplayGameObject.GetComponent<CanvasGroup>();
@@ -83,18 +81,7 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(FadeOutPopup(serveControlsCanvasGroup));
     }
 
-    //may not be needed as text is not currently changing
-    private void DisplayText(GameObject popup, string text)
-    {
-        if (popup != null)
-            popup.GetComponentInChildren<TextMeshProUGUI>().text = text;
-    }
-
-    public void DisplayPopup(GameObject popup, TextMeshProUGUI popupText)
-    {
-        popup.SetActive(true);
-        DisplayText(popup, popupText.text);
-    }
+    public void DisplayPopup(GameObject popup) => popup.SetActive(true);
 
     public void ClosePopup(GameObject popup) => popup.SetActive(false);
 
