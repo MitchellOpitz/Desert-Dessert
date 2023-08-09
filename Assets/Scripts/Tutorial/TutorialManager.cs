@@ -11,7 +11,8 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Descriptions")]
     [Space(10)]
-    [SerializeField] private TextMeshProUGUI gameDescriptionText;
+    [SerializeField] private TextMeshProUGUI firstLetterText;
+    [SerializeField] private TextMeshProUGUI secondLetterText;
     [SerializeField] private TextMeshProUGUI drivingControlsDescriptionText;
     [SerializeField] private TextMeshProUGUI serveControlsDescriptionText;
 
