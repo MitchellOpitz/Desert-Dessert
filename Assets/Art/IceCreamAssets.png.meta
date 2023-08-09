@@ -1,0 +1,708 @@
+fileFormatVersion: 2
+guid: f2fcdd5fd88d77f40bc7b5c3b19ce3dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2425275469120669180
+    second: IceCreamAssets_0
+  - first:
+      213: -4025150312778813372
+    second: IceCreamAssets_1
+  - first:
+      213: 8405504535417632486
+    second: IceCreamAssets_2
+  - first:
+      213: 8685116713501787879
+    second: IceCreamAssets_3
+  - first:
+      213: 7120017363554490158
+    second: IceCreamAssets_4
+  - first:
+      213: 6887720067178897255
+    second: IceCreamAssets_5
+  - first:
+      213: 2095747949441112903
+    second: IceCreamAssets_6
+  - first:
+      213: -1634812123588357201
+    second: IceCreamAssets_7
+  - first:
+      213: -2728037821252493032
+    second: IceCreamAssets_8
+  - first:
+      213: -6477432786412205143
+    second: IceCreamAssets_9
+  - first:
+      213: 4550949343801587265
+    second: IceCreamAssets_10
+  - first:
+      213: -8581626936607624104
+    second: IceCreamAssets_11
+  - first:
+      213: -3513036853296235404
+    second: IceCreamAssets_12
+  - first:
+      213: 2858933429582237442
+    second: IceCreamAssets_13
+  - first:
+      213: -2510504340282093859
+    second: IceCreamAssets_14
+  - first:
+      213: -5707770211699178128
+    second: IceCreamAssets_15
+  - first:
+      213: -6192873172317349772
+    second: IceCreamAssets_16
+  - first:
+      213: -4045367903524187875
+    second: IceCreamAssets_17
+  - first:
+      213: -5869849619103455821
+    second: IceCreamAssets_18
+  - first:
+      213: 4040090771194103372
+    second: IceCreamAssets_19
+  - first:
+      213: -7020608319307583927
+    second: IceCreamAssets_20
+  - first:
+      213: -3293204525938744917
+    second: IceCreamAssets_21
+  - first:
+      213: -1286855848935321152
+    second: IceCreamAssets_22
+  - first:
+      213: -4832229709143856239
+    second: IceCreamAssets_23
+  - first:
+      213: 2062123484389319730
+    second: IceCreamAssets_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IceCreamAssets_0
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 472
+        width: 54
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf50863803f48a120800000000000000
+      internalID: 2425275469120669180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_1
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 472
+        width: 54
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 440344fdd1bc328c0800000000000000
+      internalID: -4025150312778813372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_2
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 473
+        width: 54
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6b08737d956a470800000000000000
+      internalID: 8405504535417632486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_3
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 418
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e6051d92abb78870800000000000000
+      internalID: 8685116713501787879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_4
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 352
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27574591126fc260800000000000000
+      internalID: 7120017363554490158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_5
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 289
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f178c88e8169f50800000000000000
+      internalID: 6887720067178897255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_6
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 392
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74bd03108a7951d10800000000000000
+      internalID: 2095747949441112903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_7
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 415
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa39303090bff49e0800000000000000
+      internalID: -1634812123588357201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_8
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 386
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8112a6a2e00142ad0800000000000000
+      internalID: -2728037821252493032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_9
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 310
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab8e6d13398b16a0800000000000000
+      internalID: -6477432786412205143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_10
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 275
+        width: 25
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1463714f058382f30800000000000000
+      internalID: 4550949343801587265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_11
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 318
+        width: 28
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8543490c4cfe7e880800000000000000
+      internalID: -8581626936607624104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_12
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 249
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47cfb64489f2f3fc0800000000000000
+      internalID: -3513036853296235404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_13
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 171
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f0db29ec8fca720800000000000000
+      internalID: 2858933429582237442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_14
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 174
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddec86e8a95e82dd0800000000000000
+      internalID: -2510504340282093859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_15
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 143
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0754d18cb3de9c0b0800000000000000
+      internalID: -5707770211699178128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_16
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 91
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4785af839ae7e0aa0800000000000000
+      internalID: -6192873172317349772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_17
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 70
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d119ca43357fbd7c0800000000000000
+      internalID: -4045367903524187875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_18
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 206
+        width: 78
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b560680fda1a8ea0800000000000000
+      internalID: -5869849619103455821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_19
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 146
+        width: 77
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46cb5da629411830800000000000000
+      internalID: 4040090771194103372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_20
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 94
+        width: 78
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ee48c2ee9c19e90800000000000000
+      internalID: -7020608319307583927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_21
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 159
+        width: 29
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba166ba8eef2c42d0800000000000000
+      internalID: -3293204525938744917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_22
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 73
+        width: 29
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c193176c6b242ee0800000000000000
+      internalID: -1286855848935321152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_23
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 170
+        width: 29
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b24698ea870fcb0800000000000000
+      internalID: -4832229709143856239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCreamAssets_24
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 256
+        width: 54
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 234240a22622e9c10800000000000000
+      internalID: 2062123484389319730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

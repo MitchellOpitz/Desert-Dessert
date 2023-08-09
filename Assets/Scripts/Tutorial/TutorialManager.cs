@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    //create static instance of this class
+    public static TutorialManager Instance { get; private set; }
+
     [Header("Popup GameObjects")]
     [SerializeField] private GameObject gameDescriptionGameObject;
     [SerializeField] private GameObject drivingControlsDisplayGameObject;
@@ -21,6 +24,14 @@ public class TutorialManager : MonoBehaviour
     private bool hasServeControlPopupBeenDisplayed;
 
     [SerializeField] private TutorialPlayerInput tutorialPlayerInput;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -72,22 +83,22 @@ public class TutorialManager : MonoBehaviour
     private void FadeOutDrivingTutorial()
     {
         if (tutorialPlayerInput.AllKeysPressed() && hasDrivingControlPopupBeenDisplayed)
-            StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup));
+            StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup, 4f));
     }
 
     private void FadeOutServeTutorial()
     {
         if (tutorialPlayerInput.MouseButtonClicked() && hasServeControlPopupBeenDisplayed)
-            StartCoroutine(FadeOutPopup(serveControlsCanvasGroup));
+            StartCoroutine(FadeOutPopup(serveControlsCanvasGroup, 4f));
     }
 
     public void DisplayPopup(GameObject popup) => popup.SetActive(true);
 
     public void ClosePopup(GameObject popup) => popup.SetActive(false);
 
-    private IEnumerator FadeOutPopup(CanvasGroup canvasGroup)
+    private IEnumerator FadeOutPopup(CanvasGroup canvasGroup, float secondsBeforeFadeStarts)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(secondsBeforeFadeStarts);
 
         canvasGroup.alpha = 1f;
 
