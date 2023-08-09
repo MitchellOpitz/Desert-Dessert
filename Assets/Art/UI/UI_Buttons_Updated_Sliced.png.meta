@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 209ebf22b8f2ab64b9350d3985fa91e2
+guid: 43535ba75001f0045817019568dd4821
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -108,8 +108,8 @@ TextureImporter:
         width: 375
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 15, z: 15, w: 16}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -129,7 +129,7 @@ TextureImporter:
         width: 374
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,8 +150,8 @@ TextureImporter:
         width: 374
         height: 124
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 15, z: 15, w: 14}
       outline: []
       physicsShape: []
       tessellationDetail: 0

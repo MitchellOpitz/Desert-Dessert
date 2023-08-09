@@ -27,11 +27,11 @@ public class TutorialManager : MonoBehaviour
     {
         gameDescriptionGameObject.SetActive(true);
 
-        drivingControlsDisplayGameObject.SetActive(true);
-        hasDrivingControlPopupBeenDisplayed = true; //move later to when popup is displayed
+        drivingControlsDisplayGameObject.SetActive(false);
+        hasDrivingControlPopupBeenDisplayed = false; //move later to when popup is displayed and set true
 
-        serveControlsDisplayGameObject.SetActive(true);
-        hasServeControlPopupBeenDisplayed = true; //move later to when popup is displayed
+        serveControlsDisplayGameObject.SetActive(false);
+        hasServeControlPopupBeenDisplayed = false; //move later to when popup is displayed and set true
 
         drivingControlsCanvasGroup = drivingControlsDisplayGameObject.GetComponent<CanvasGroup>();
         serveControlsCanvasGroup = serveControlsDisplayGameObject.GetComponent<CanvasGroup>();
@@ -39,13 +39,13 @@ public class TutorialManager : MonoBehaviour
 
     private void OnEnable()
     {
-        tutorialPlayerInput.OnKeyPressed += FadeOutDrivingTutorial;
+        tutorialPlayerInput.OnAllKeysPressed += FadeOutDrivingTutorial;
         tutorialPlayerInput.OnMouseButtonClicked += FadeOutServeTutorial;
     }
 
     private void OnDisable()
     {
-        tutorialPlayerInput.OnKeyPressed -= FadeOutDrivingTutorial;
+        tutorialPlayerInput.OnAllKeysPressed -= FadeOutDrivingTutorial;
         tutorialPlayerInput.OnMouseButtonClicked -= FadeOutServeTutorial;
     }
 
@@ -72,7 +72,7 @@ public class TutorialManager : MonoBehaviour
 
     private void FadeOutDrivingTutorial()
     {
-        if (tutorialPlayerInput.KeyPressed() && hasDrivingControlPopupBeenDisplayed)
+        if (tutorialPlayerInput.AllKeysPressed() && hasDrivingControlPopupBeenDisplayed)
             StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup));
     }
 
