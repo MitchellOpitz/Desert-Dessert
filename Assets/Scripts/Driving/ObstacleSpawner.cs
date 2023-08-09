@@ -14,7 +14,7 @@ public class ObstacleSpawner : MonoBehaviour
             float RandomValue = Random.value;
             if(RandomValue <= SpawnRate) {
                 int RandomObject = Random.Range(0, ObstacleList.Length);
-                Instantiate(ObstacleList[RandomObject], Point.position, Quaternion.identity);
+                Instantiate(ObstacleList[RandomObject], Point.position, transform.rotation);
             }
         }
     }
