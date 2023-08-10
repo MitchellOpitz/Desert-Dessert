@@ -63,7 +63,7 @@ MonoBehaviour:
   - {fileID: 6315679879863170538}
   - {fileID: 6315679881112064496}
   - {fileID: 6315679879989715685}
-  SpawnRate: 0.2
+  SpawnRate: 0.1
 --- !u!1 &6315679879763520422
 GameObject:
   m_ObjectHideFlags: 0

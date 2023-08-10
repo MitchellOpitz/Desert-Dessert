@@ -5,7 +5,7 @@ public class RoadGeneration : MonoBehaviour
 {
     [Header("Generation Parameters")]
     [SerializeField] float TurnProbability;
-    [SerializeField] Vector2 TileSize;
+    [SerializeField] float TileSize;
     [SerializeField] int MinMapSize;
     [SerializeField] int MaxMapSize;
     [SerializeField] Transform EndTransform;
@@ -27,12 +27,16 @@ public class RoadGeneration : MonoBehaviour
     };
 
     HashSet<Vector2> OccupiedPositions = new HashSet<Vector2>();
-    Stack<Vector2> BacktrackStack = new Stack<Vector2>();
+
+    [SerializeField] GameObject BackgroundGraphics;
+    [SerializeField] float BGSize;
 
     void Start()
     {
+        GenerateBackground();
         InitializeRoad();
-        GenerateRoad(CurrentGridPosition);
+        OccupiedPositions.Add(new Vector2(0, -26.5f));
+        GenerateRoad();
     }
 
     void InitializeRoad()
@@ -40,92 +44,98 @@ public class RoadGeneration : MonoBehaviour
         EndGridPosition.x = Random.Range(MinMapSize, MaxMapSize);
         EndGridPosition.y = Random.Range(MinMapSize, MaxMapSize);
         EndGridPosition *= TileSize;
+
         EndTransform.position = EndGridPosition;
 
-        CurrentGridPosition = transform.position;
+        CurrentGridPosition = Vector2.zero;
         CurrentGridRotation = 0f;
-
-        OccupiedPositions.Clear();
-        BacktrackStack.Clear();
-
-        // Add starting point to occupied positions
-        OccupiedPositions.Add(new Vector2(0, -26.5f));
-
-        Instantiate(StraightRoadPrefab, EndGridPosition, Quaternion.identity);
-        OccupiedPositions.Add(EndGridPosition);
     }
 
-    void GenerateRoad(Vector2 position)
+    void GenerateRoad()
     {
-        if (position.y > EndGridPosition.y)
+        if (CurrentGridPosition.y >= EndGridPosition.y)
         {
+            Quaternion endRotation = Quaternion.Euler(new Vector3(0, 0, CurrentGridRotation));
+            Instantiate(StraightRoadPrefab, CurrentGridPosition, endRotation);
+            OccupiedPositions.Add(CurrentGridPosition);
             return;
         }
 
-        float randomValue = Random.value;
-        bool rightTurn = Random.value > 0.5f;
+        float RandomValue = Random.value;
 
-        if (randomValue < TurnProbability)
-        {
-            Instantiate(StraightRoadPrefab, position, Quaternion.Euler(0, 0, -CurrentGridRotation));
-            CurrentGridPosition += DirectionChanges[CurrentGridRotation] * TileSize;
-        }
-        else if (rightTurn)
-        {
-            Instantiate(RightTurnPrefab, position, Quaternion.Euler(0, 0, -CurrentGridRotation));
-            CurrentGridRotation = (CurrentGridRotation + 90f) % 360f;
-            CurrentGridPosition += DirectionChanges[CurrentGridRotation] * TileSize;
-        }
-        else
-        {
-            Instantiate(LeftTurnPrefab, position, Quaternion.Euler(0, 0, -CurrentGridRotation));
-            CurrentGridRotation = (CurrentGridRotation + 270f) % 360f;
-            CurrentGridPosition += DirectionChanges[CurrentGridRotation] * TileSize;
-        }
+        Vector2 targetDirection = (EndGridPosition - CurrentGridPosition).normalized;
+        float angleToTarget = Vector2.SignedAngle(DirectionChanges[CurrentGridRotation], targetDirection);
 
-        if (!OccupiedPositions.Contains(CurrentGridPosition))
+        if (RandomValue < TurnProbability || Mathf.Abs(angleToTarget) > 45f)
         {
-            OccupiedPositions.Add(CurrentGridPosition);
-            GenerateRoad(CurrentGridPosition);
-        }
-        else
-        {
-            Backtrack(position);
-        }
-    }
+            GameObject prefab;
+            float rotation;
 
-    void Backtrack(Vector2 position)
-    {
-        if (BacktrackStack.Count > 0)
-        {
-            Vector2 lastPosition = BacktrackStack.Pop();
-
-            if (!OccupiedPositions.Contains(lastPosition))
+            if (Mathf.Abs(angleToTarget) > 45f)
             {
-                CurrentGridPosition = lastPosition;
-                GenerateRoad(lastPosition);
+                if (angleToTarget > 0f)
+                {
+                    prefab = RightTurnPrefab;
+                    rotation = CurrentGridRotation + 270f;
+                    CurrentGridRotation = (CurrentGridRotation + 270f) % 360f;
+                }
+                else
+                {
+                    prefab = LeftTurnPrefab;
+                    rotation = CurrentGridRotation + 90f;
+                    CurrentGridRotation = (CurrentGridRotation + 90f) % 360f;
+                }
             }
             else
             {
-                Backtrack(position);
+                prefab = StraightRoadPrefab;
+                rotation = CurrentGridRotation;
+            }
+
+            Quaternion prefabRotation = Quaternion.Euler(new Vector3(0, 0, rotation));
+            Vector2 newPosition = CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
+
+            if (!OccupiedPositions.Contains(newPosition) && IsWithinBounds(newPosition))
+            {
+                Instantiate(prefab, CurrentGridPosition, prefabRotation);
+                OccupiedPositions.Add(CurrentGridPosition);
+                CurrentGridPosition = newPosition;
+            }
+            else
+            {
+                GenerateRoad();
+            }
+        }
+        else
+        {
+            Vector2 newPosition = CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
+
+            if (!OccupiedPositions.Contains(newPosition) && IsWithinBounds(newPosition))
+            {
+                Instantiate(StraightRoadPrefab, CurrentGridPosition, Quaternion.Euler(new Vector3(0, 0, CurrentGridRotation)));
+                OccupiedPositions.Add(CurrentGridPosition);
+                CurrentGridPosition = newPosition;
+            }
+            else
+            {
+                GenerateRoad();
+            }
+        }
+
+        GenerateRoad();
+    }
+
+    bool IsWithinBounds(Vector2 position)
+    {
+        return position.x >= 0 && position.x <= MaxMapSize * TileSize && position.y >= 0 && position.y <= MaxMapSize * TileSize;
+    }
+
+    void GenerateBackground() {
+        for(float y = -MaxMapSize; y < (MaxMapSize / 0.5f * BGSize); y += BGSize) {
+            for(float x = -MaxMapSize; x < (MaxMapSize / 0.5f * BGSize); x += BGSize) {
+                Instantiate(BackgroundGraphics, new Vector3(x, y, 0), Quaternion.identity, transform.Find("BG"));
             }
         }
     }
 
-}
-
-public static class ListExtensions
-{
-    public static void Shuffle<T>(this IList<T> list)
-    {
-        int n = list.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = Random.Range(0, n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
-    }
 }
