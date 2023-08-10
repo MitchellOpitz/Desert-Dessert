@@ -12,6 +12,7 @@ public class MouseCursor : MonoBehaviour
     [SerializeField] private InputActionReference mouseClickAction;
 
     [SerializeField] private List<Transform> hoverTiltTransformsList;
+    [SerializeField] private Transform trashTransform;
 
     private bool hoveringOverIceCream;
 
@@ -55,6 +56,11 @@ public class MouseCursor : MonoBehaviour
 
         transform.position = mousePos;
 
+        TiltCursor(mousePos);
+    }
+
+    private void TiltCursor(Vector3 mousePos)
+    {
         foreach (Transform hoverTransform in hoverTiltTransformsList)
         {
             float distance = Vector3.Distance(hoverTransform.position, mousePos);
@@ -76,10 +82,14 @@ public class MouseCursor : MonoBehaviour
     public void OnMouseClick(InputAction.CallbackContext context)
     {
         Debug.Log("Mouse Clicked");
+
+        //handle item clicking and dragging
     }
 
     public void OnMouseRelease(InputAction.CallbackContext context)
     {
         Debug.Log("Mouse Released");
+
+        //handle item dropping after dragging
     }
 }
