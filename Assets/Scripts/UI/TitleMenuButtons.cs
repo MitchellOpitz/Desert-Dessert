@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleMenuButtons : MonoBehaviour
 {
@@ -21,9 +22,6 @@ public class TitleMenuButtons : MonoBehaviour
     float slideSpeed;
 
     [SerializeField]
-    float velocity;
-
-    [SerializeField]
     Canvas title;
 
     [SerializeField]
@@ -40,7 +38,7 @@ public class TitleMenuButtons : MonoBehaviour
 
     public void PlayGameButton()
     {
-        Debug.Log("Play Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SettingsButton()
@@ -61,11 +59,6 @@ public class TitleMenuButtons : MonoBehaviour
     public void BackFromCredits()
     {
         targetCanvas = titleCanvas;
-    }
-
-    public void QuitGameButton()
-    {
-        Debug.Log("Quit Game");
     }
 
     private void FixedUpdate()
