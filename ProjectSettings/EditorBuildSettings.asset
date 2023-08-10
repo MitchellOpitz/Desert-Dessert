@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DrivingScene.unity
     guid: 93e9cc09006f3254999447d6a780b9b8
+  - enabled: 1
+    path: Assets/Scenes/IceCreamTruckScene.unity
+    guid: 8651cab0707466e4eacdcf4aa122afc1
   m_configObjects: {}
