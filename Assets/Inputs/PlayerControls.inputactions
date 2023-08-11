@@ -668,6 +668,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Debug",
+            "id": "5bdeb833-f3a6-40f5-91d7-18ec8664157b",
+            "actions": [
+                {
+                    "name": "ListPosition",
+                    "type": "Button",
+                    "id": "eedb1648-255a-4798-bc9b-38abe58621ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6325447f-927f-469e-b57d-23cef68ae82e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ListPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
