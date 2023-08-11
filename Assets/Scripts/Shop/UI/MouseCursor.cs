@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,11 +8,15 @@ public class MouseCursor : MonoBehaviour
     private Camera mainCamera;
     private Vector2 mousePosition;
 
+    public event Action OnMouseClicked;
+    public event Action OnMouseReleased;
+
+    [Header("Input Action References")]
     [SerializeField] private InputActionReference mousePositionAction;
     [SerializeField] private InputActionReference mouseClickAction;
 
+    [Header("Transforms"), Space(10)]
     [SerializeField] private List<Transform> hoverTiltTransformsList;
-    [SerializeField] private Transform trashTransform;
 
     private bool hoveringOverIceCream;
 
@@ -51,12 +55,18 @@ public class MouseCursor : MonoBehaviour
 
     private void HandleMousePosition()
     {
-        Vector3 mousePos = mainCamera.ScreenToWorldPoint(mousePosition);
-        mousePos.z = 0f;
+        Vector3 mousePos = GetMousePosition();
 
         transform.position = mousePos;
 
         TiltCursor(mousePos);
+    }
+
+    public Vector3 GetMousePosition()
+    {
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(mousePosition);
+        mousePos.z = 0f;
+        return mousePos;
     }
 
     private void TiltCursor(Vector3 mousePos)
@@ -81,15 +91,18 @@ public class MouseCursor : MonoBehaviour
 
     public void OnMouseClick(InputAction.CallbackContext context)
     {
-        Debug.Log("Mouse Clicked");
-
-        //handle item clicking and dragging
+        OnMouseClicked?.Invoke();
     }
 
     public void OnMouseRelease(InputAction.CallbackContext context)
     {
-        Debug.Log("Mouse Released");
+        OnMouseReleased?.Invoke();
+    }
 
-        //handle item dropping after dragging
+    public bool IsCursorOverTransform(Transform targetTransform)
+    {
+        Vector3 cursorPosition = GetMousePosition();
+        float distance = Vector3.Distance(targetTransform.position, cursorPosition);
+        return distance < 1f;
     }
 }
