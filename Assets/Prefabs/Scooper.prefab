@@ -97,3 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePositionAction: {fileID: -3947023206355986021, guid: 745b859d1dc097944a30c50504fa02b4, type: 3}
   mouseClickAction: {fileID: 7624012607301192510, guid: 745b859d1dc097944a30c50504fa02b4, type: 3}
+  hoverTiltTransformsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  trashTransform: {fileID: 0}

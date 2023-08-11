@@ -380,9 +380,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1622258105230548256, guid: adee75d3b36bd824a9a80a9e0b3c71ed, type: 3}
-  placeItemTransform: {fileID: 548064842}
   mouseCursor: {fileID: 1535812350}
   chooseConeAction: {fileID: -5465100215271050844, guid: 745b859d1dc097944a30c50504fa02b4, type: 3}
+  chooseFlavorAction: {fileID: -4339579824497053859, guid: 745b859d1dc097944a30c50504fa02b4, type: 3}
+  chooseSauceAction: {fileID: -6314878726826984936, guid: 745b859d1dc097944a30c50504fa02b4, type: 3}
+  chooseToppingAction: {fileID: 6264082428277190396, guid: 745b859d1dc097944a30c50504fa02b4, type: 3}
+  placeConeTransform: {fileID: 548064842}
+  trashTransform: {fileID: 1354495928}
 --- !u!4 &1091776817
 Transform:
   m_ObjectHideFlags: 0
@@ -469,7 +473,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 33a3476f8c4a8c046b42d2f7696f5c1e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -813,10 +817,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1354495928}
     - target: {fileID: 8209444173600182375, guid: 32b60b29ddc21224ca981411d5c890e2, type: 3}
-      propertyPath: hoverTiltTransformsList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209444173600182375, guid: 32b60b29ddc21224ca981411d5c890e2, type: 3}
       propertyPath: hoverTiltTransformsList.Array.data[0]
       value: 
       objectReference: {fileID: 618653915}
@@ -828,10 +828,6 @@ PrefabInstance:
       propertyPath: hoverTiltTransformsList.Array.data[2]
       value: 
       objectReference: {fileID: 99069853}
-    - target: {fileID: 8209444173600182375, guid: 32b60b29ddc21224ca981411d5c890e2, type: 3}
-      propertyPath: hoverTiltTransformsList.Array.data[3]
-      value: 
-      objectReference: {fileID: 1354495928}
     - target: {fileID: 8209444173600182392, guid: 32b60b29ddc21224ca981411d5c890e2, type: 3}
       propertyPath: m_Name
       value: Scooper
