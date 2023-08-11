@@ -13,6 +13,12 @@ public class VideoSettingsManager : MonoBehaviour
     [SerializeField]
     private TMP_Dropdown resolutionDropdown;
 
+    [SerializeField]
+    private TMP_Text downloadFor1080pText;
+
+    [SerializeField]
+    private TMP_Text webGLResolutionText;
+
     private Resolution[] resolutions;
     private List<Resolution> availableResolutions;
 
@@ -23,8 +29,26 @@ public class VideoSettingsManager : MonoBehaviour
     {
         resolutions = Screen.resolutions;
         availableResolutions = new List<Resolution>();
-
         resolutionDropdown.ClearOptions();
+
+        if (
+            Application.platform == RuntimePlatform.WindowsPlayer
+            || Application.platform == RuntimePlatform.WindowsEditor
+        )
+        {
+            downloadFor1080pText.gameObject.SetActive(false);
+            webGLResolutionText.gameObject.SetActive(false);
+            SetWindowsResolutions();
+        }
+        else if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            downloadFor1080pText.gameObject.SetActive(true);
+            webGLResolutionText.gameObject.SetActive(true);
+        }
+    }
+
+    private void SetWindowsResolutions()
+    {
         currentRefreshRate = Screen.currentResolution.refreshRate;
 
         for (int i = 0; i < resolutions.Length; i++)

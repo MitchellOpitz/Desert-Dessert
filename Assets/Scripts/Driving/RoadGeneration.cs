@@ -1,114 +1,141 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadGeneration : MonoBehaviour
 {
     [Header("Generation Parameters")]
-    [SerializeField] float RightProbability;
-    [SerializeField] float LeftProbability;
-
-    [Space]
-
-    [SerializeField] float BranchPossibility;
-
-    [Header("Sizes")]
-    [SerializeField] Vector2 TileSize;
+    [SerializeField] float TurnProbability;
+    [SerializeField] float TileSize;
     [SerializeField] int MinMapSize;
     [SerializeField] int MaxMapSize;
-
-    [Header("Transforms")]
     [SerializeField] Transform EndTransform;
-    [SerializeField] Vector3 CurrentRoadPosition;
-
-    [Header("Prefabs")]
     [SerializeField] GameObject StraightRoadPrefab;
-    [SerializeField] GameObject LeftRoadPrefab;
-    [SerializeField] GameObject RightRoadPrefab;
+    [SerializeField] GameObject RightTurnPrefab;
+    [SerializeField] GameObject LeftTurnPrefab;
 
-    Vector2 StartPosition; Vector2 EndPosition;
+    Vector2 CurrentGridPosition;
+    Vector2 EndGridPosition;
 
-    List<Vector3> RoadPositions = new List<Vector3>();
+    float CurrentGridRotation;
+
+    Dictionary<float, Vector2> DirectionChanges = new Dictionary<float, Vector2>()
+    {
+        { 0f, Vector2.up },
+        { 90f, Vector2.right },
+        { 180f, Vector2.down },
+        { 270f, Vector2.left }
+    };
+
+    HashSet<Vector2> OccupiedPositions = new HashSet<Vector2>();
+
+    [SerializeField] GameObject BackgroundGraphics;
+    [SerializeField] float BGSize;
 
     void Start()
     {
-        InitialiseRoad();
-    }
-
-    void Update()
-    {
+        GenerateBackground();
+        InitializeRoad();
+        OccupiedPositions.Add(new Vector2(0, -26.5f));
         GenerateRoad();
     }
 
-    void InitialiseRoad()
+    void InitializeRoad()
     {
-        EndPosition.x = Random.Range(MinMapSize, MaxMapSize);
-        EndPosition.y = Random.Range(MinMapSize, MaxMapSize);
+        EndGridPosition.x = Random.Range(MinMapSize, MaxMapSize);
+        EndGridPosition.y = Random.Range(MinMapSize, MaxMapSize);
+        EndGridPosition *= TileSize;
 
-        EndPosition *= TileSize;
-        EndTransform.position = EndPosition;
+        EndTransform.position = EndGridPosition;
 
-        CurrentRoadPosition = Vector3.zero; // Reset current position
-        RoadPositions.Clear(); // Clear existing road positions
-        RoadPositions.Add(CurrentRoadPosition); // Add the starting position
+        CurrentGridPosition = Vector2.zero;
+        CurrentGridRotation = 0f;
     }
 
     void GenerateRoad()
     {
-        if (CurrentRoadPosition.y + TileSize.y <= EndPosition.y)
+        if (CurrentGridPosition.y >= EndGridPosition.y)
         {
-            CurrentRoadPosition += new Vector3(CurrentRoadPosition.x, TileSize.y, 0);
+            Quaternion endRotation = Quaternion.Euler(new Vector3(0, 0, CurrentGridRotation));
+            Instantiate(StraightRoadPrefab, CurrentGridPosition, endRotation);
+            OccupiedPositions.Add(CurrentGridPosition);
+            return;
+        }
 
-            float RandomValue = Random.value;
+        float RandomValue = Random.value;
 
-            if (RandomValue < RightProbability)
+        Vector2 targetDirection = (EndGridPosition - CurrentGridPosition).normalized;
+        float angleToTarget = Vector2.SignedAngle(DirectionChanges[CurrentGridRotation], targetDirection);
+
+        if (RandomValue < TurnProbability || Mathf.Abs(angleToTarget) > 45f)
+        {
+            GameObject prefab;
+            float rotation;
+
+            if (Mathf.Abs(angleToTarget) > 45f)
             {
-                GenerateBranch(1, RightRoadPrefab);
-            }
-            else if (RandomValue < LeftProbability + RightProbability)
-            {
-                GenerateBranch(-1, LeftRoadPrefab);
+                if (angleToTarget > 0f)
+                {
+                    prefab = RightTurnPrefab;
+                    rotation = CurrentGridRotation + 270f;
+                    CurrentGridRotation = (CurrentGridRotation + 270f) % 360f;
+                }
+                else
+                {
+                    prefab = LeftTurnPrefab;
+                    rotation = CurrentGridRotation + 90f;
+                    CurrentGridRotation = (CurrentGridRotation + 90f) % 360f;
+                }
             }
             else
             {
-                Instantiate(StraightRoadPrefab, CurrentRoadPosition, Quaternion.identity);
+                prefab = StraightRoadPrefab;
+                rotation = CurrentGridRotation;
             }
-        }
-    }
 
-    void GenerateBranch(int Direction, GameObject BranchPrefab)
-    {
-        Vector3 BranchPosition = CurrentRoadPosition + new Vector3(TileSize.x * Direction, TileSize.y, 0);
+            Quaternion prefabRotation = Quaternion.Euler(new Vector3(0, 0, rotation));
+            Vector2 newPosition = CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
 
-        // Check for collisions with existing roads
-        bool CanPlaceBranch = true;
-        foreach (Vector3 Position in RoadPositions)
-        {
-            if (Vector3.Distance(BranchPosition, Position) < TileSize.x)
+            if (!OccupiedPositions.Contains(newPosition) && IsWithinBounds(newPosition))
             {
-                CanPlaceBranch = false;
-                break;
+                Instantiate(prefab, CurrentGridPosition, prefabRotation);
+                OccupiedPositions.Add(CurrentGridPosition);
+                CurrentGridPosition = newPosition;
+            }
+            else
+            {
+                GenerateRoad();
+            }
+        }
+        else
+        {
+            Vector2 newPosition = CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
+
+            if (!OccupiedPositions.Contains(newPosition) && IsWithinBounds(newPosition))
+            {
+                Instantiate(StraightRoadPrefab, CurrentGridPosition, Quaternion.Euler(new Vector3(0, 0, CurrentGridRotation)));
+                OccupiedPositions.Add(CurrentGridPosition);
+                CurrentGridPosition = newPosition;
+            }
+            else
+            {
+                GenerateRoad();
             }
         }
 
-        if (CanPlaceBranch)
-        {
-            Instantiate(BranchPrefab, BranchPosition, Quaternion.identity);
-            RoadPositions.Add(BranchPosition);
-            GenerateRoadFromBranch(BranchPosition);
-        }
+        GenerateRoad();
     }
 
-    void GenerateRoadFromBranch(Vector3 BranchPosition)
+    bool IsWithinBounds(Vector2 position)
     {
-        Vector3 DirectionToEndpoint = ((Vector3)EndPosition - BranchPosition).normalized;
-        Vector3 CurrentPos = BranchPosition;
+        return position.x >= 0 && position.x <= MaxMapSize * TileSize && position.y >= 0 && position.y <= MaxMapSize * TileSize;
+    }
 
-        while (Vector3.Distance(CurrentPos, EndPosition) > TileSize.y)
-        {
-            CurrentPos += DirectionToEndpoint * TileSize.y;
-            Instantiate(StraightRoadPrefab, CurrentPos, Quaternion.identity);
-            RoadPositions.Add(CurrentPos);
+    void GenerateBackground() {
+        for(float y = -MaxMapSize; y < (MaxMapSize / 0.5f * BGSize); y += BGSize) {
+            for(float x = -MaxMapSize; x < (MaxMapSize / 0.5f * BGSize); x += BGSize) {
+                Instantiate(BackgroundGraphics, new Vector3(x, y, 0), Quaternion.identity, transform.Find("BG"));
+            }
         }
     }
+
 }
