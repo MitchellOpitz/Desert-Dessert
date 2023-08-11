@@ -327,6 +327,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ChooseFlavor",
+                    "type": "Button",
+                    "id": "3de264a0-ba28-469b-8366-483f51da89e7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChooseSauce",
+                    "type": "Button",
+                    "id": "8affcf1d-6bd1-4ad9-bb83-3e659e894d8f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChooseTopping",
+                    "type": "Button",
+                    "id": "17c2d81c-11fd-41c4-96b3-7e251e50f016",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -360,6 +387,105 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChooseCone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d795a37-1b6f-41e7-8a78-c51dee172d08",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=0)",
+                    "groups": "",
+                    "action": "ChooseFlavor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd8d6f4f-a36a-4fa7-baeb-d64af47c24cb",
+                    "path": "<Keyboard>/w",
+                    "interactions": "Press",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "ChooseFlavor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a876f125-fa27-4cc5-8dd0-5597624da8d5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "ChooseFlavor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41509cdf-7829-4f5b-8391-381c7e2934aa",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=0)",
+                    "groups": "",
+                    "action": "ChooseSauce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e347300-8bf9-46a6-8212-63b4691b510a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Press",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "ChooseSauce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09e5fa20-dbd2-48b5-89a8-569a320a0fb0",
+                    "path": "<Keyboard>/d",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "ChooseSauce",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49c03efa-ffc6-4bd2-9091-e38201f89639",
+                    "path": "<Keyboard>/z",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=0)",
+                    "groups": "",
+                    "action": "ChooseTopping",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18c146e0-b4c0-4754-bf1d-3c29f683d63a",
+                    "path": "<Keyboard>/x",
+                    "interactions": "Press",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "ChooseTopping",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e675f5f7-2ff3-49b3-9ec0-c82caf84a44e",
+                    "path": "<Keyboard>/c",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "ChooseTopping",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
