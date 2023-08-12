@@ -17,9 +17,22 @@ public class ItemController : MonoBehaviour
     [SerializeField] private Transform placeConeTransform;
     [SerializeField] private Transform trashTransform;
 
+    [Header("Sprites"), Space(10)]
+    [SerializeField] private Sprite[] flavorSprites;
+    [SerializeField] private Sprite[] sauceSprites;
+    [SerializeField] private Sprite[] toppingSprites;
+
+    private SpriteRenderer[] coneSpriteRenderers;
+
     private GameObject currentItem;
     private bool holdingItem;
-    private bool chosenFlavor;
+    private bool chosenMaxFlavors;
+    private bool chosenSauce;
+    private bool chosenTopping;
+    private bool canMoveOntoNextItem;
+
+    private int maxFlavors = 3;
+    private int currentFlavorCount = 0;
 
     private List<int> flavors = new List<int>();
     private List<int> sauces = new List<int>();
@@ -74,63 +87,134 @@ public class ItemController : MonoBehaviour
 
     private void OnChooseFlavor(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !chosenMaxFlavors && (!chosenSauce || !chosenTopping))
         {
-            if (FlavorButtonPressed(0))
-                ChooseFlavor(0);
-            else if (FlavorButtonPressed(1))
-                ChooseFlavor(1);
-            else if (FlavorButtonPressed(2))
-                ChooseFlavor(2);
+            int chosenFlavorIndex = GetChosenFlavorIndex();
+            if (chosenFlavorIndex != -1)
+            {
+                if (chosenSauce || chosenTopping)
+                    return;
 
-            chosenFlavor = true;
+                ChooseFlavor(chosenFlavorIndex);
+
+                if (currentFlavorCount >= 1)
+                    canMoveOntoNextItem = true;
+
+                if (currentFlavorCount == maxFlavors)
+                    chosenMaxFlavors = true;
+            }
         }
     }
 
     private void OnChooseSauce(InputAction.CallbackContext context)
     {
-        if (context.performed && chosenFlavor)
+        if (context.performed && !chosenSauce && (canMoveOntoNextItem || chosenMaxFlavors))
         {
-           if (SauceButtonPressed(0))
-                ChooseSauce(0);
-            else if (SauceButtonPressed(1))
-                ChooseSauce(1);
-            else if (SauceButtonPressed(2))
-                ChooseSauce(2);
+          int chosenSauceIndex = GetChosenSauceIndex();
+            if (chosenSauceIndex != -1)
+            {
+                ChooseSauce(chosenSauceIndex);
+                chosenSauce = true;
+            }
         }
     }
 
-    private void OnChooseTopping (InputAction.CallbackContext context)
+    private void OnChooseTopping(InputAction.CallbackContext context)
     {
-        if (context.performed && chosenFlavor)
+        if (context.performed && !chosenTopping && (canMoveOntoNextItem || chosenMaxFlavors))
         {
-            if (ToppingButtonPressed(0))
-                ChooseTopping(0);
-            else if (ToppingButtonPressed(1))
-                ChooseTopping(1);
-            else if (ToppingButtonPressed(2))
-                ChooseTopping(2);
+            int chosenToppingIndex = GetChosenToppingIndex();
+            if (chosenToppingIndex != -1)
+            {
+                ChooseTopping(chosenToppingIndex);
+                chosenTopping = true;
+            }
         }
     }
 
     private void ChooseFlavor(int flavorIndex)
     {
-        flavors.Add(flavorIndex);
-        Debug.Log("Flavor chosen: " + flavorIndex);
+        if (currentFlavorCount < maxFlavors)
+        {
+            flavors.Add(flavorIndex);
+
+            if (flavorIndex >= 0 && flavorIndex < maxFlavors)
+                coneSpriteRenderers[currentFlavorCount].sprite = flavorSprites[flavorIndex];
+
+            currentFlavorCount++;
+        }
+    }
+
+    private int GetChosenFlavorIndex()
+    {
+        if (currentFlavorCount < maxFlavors)
+        {
+            for (int i = 0; i < flavorSprites.Length; i++)
+            {
+                if (FlavorButtonPressed(i))
+                    return i;
+            }
+        }
+        return -1;
     }
 
     private void ChooseSauce(int sauceIndex)
     {
-        sauces.Add(sauceIndex);
-        Debug.Log("Sauce chosen: " + sauceIndex);
+        if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
+        {
+            sauces.Add(sauceIndex);
+
+            if (currentFlavorCount == 1)
+                coneSpriteRenderers[3].sprite = sauceSprites[sauceIndex];
+            else if (currentFlavorCount == 2)
+                coneSpriteRenderers[4].sprite = sauceSprites[sauceIndex];
+            else if (currentFlavorCount == 3)
+                coneSpriteRenderers[5].sprite = sauceSprites[sauceIndex];
+        }
+    }
+
+    private int GetChosenSauceIndex()
+    {
+        if (currentFlavorCount > 0 && currentFlavorCount <= maxFlavors)
+        {
+            for (int i = 0; i < sauceSprites.Length; i++)
+            {
+                if (SauceButtonPressed(i) && !sauces.Contains(i))
+                    return i;
+            }
+        }
+        return -1;
     }
 
     private void ChooseTopping(int toppingIndex)
     {
-        toppings.Add(toppingIndex);
-        Debug.Log("Topping chosen: " + toppingIndex);
+       if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
+        {
+            toppings.Add(toppingIndex);
+
+            if (currentFlavorCount == 1)
+                coneSpriteRenderers[6].sprite = toppingSprites[toppingIndex];
+            else if (currentFlavorCount == 2)
+                coneSpriteRenderers[7].sprite = toppingSprites[toppingIndex];
+            else if (currentFlavorCount == 3)
+                coneSpriteRenderers[8].sprite = toppingSprites[toppingIndex];
+        }
     }
 
+    private int GetChosenToppingIndex()
+    {
+        if (currentFlavorCount > 0 && currentFlavorCount <= maxFlavors)
+        {
+            for (int i = 0; i < toppingSprites.Length; i++)
+            {
+                if (ToppingButtonPressed(i) && !toppings.Contains(i))
+                    return i;
+            }
+        }
+        return -1;
+    }
+
+    #region Mouse Input
     private void OnMouseClick()
     {
         if (!holdingItem)
@@ -156,24 +240,6 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private bool FlavorButtonPressed(int flavorIndex) => (int)chooseFlavorAction.action.ReadValue<float>() == flavorIndex;
-
-    private bool SauceButtonPressed(int sauceIndex) => (int)chooseSauceAction.action.ReadValue<float>() == sauceIndex;
-
-    private bool ToppingButtonPressed(int toppingIndex) => (int)chooseToppingAction.action.ReadValue<float>() == toppingIndex;
-
-    private void CreateItemAtTransform(Transform itemTransform)
-    {
-        if (itemPrefab != null && itemTransform != null)
-        {
-            if (itemTransform.childCount == 0)
-            {
-                GameObject item = Instantiate(itemPrefab, itemTransform.position, Quaternion.identity);
-                item.transform.SetParent(itemTransform);
-            }
-        }
-    }
-
     private void PickUpItem(Transform pickUpTransform)
     {
         currentItem = pickUpTransform.GetChild(0).gameObject;
@@ -188,5 +254,67 @@ public class ItemController : MonoBehaviour
             Vector3 mousePosition = mouseCursor.GetMousePosition();
             currentItem.transform.position = mousePosition;
         }
+    }
+
+    #endregion
+
+    #region Button Input
+    private bool FlavorButtonPressed(int flavorIndex) => (int)chooseFlavorAction.action.ReadValue<float>() == flavorIndex;
+
+    private bool SauceButtonPressed(int sauceIndex) => (int)chooseSauceAction.action.ReadValue<float>() == sauceIndex;
+
+    private bool ToppingButtonPressed(int toppingIndex) => (int)chooseToppingAction.action.ReadValue<float>() == toppingIndex;
+
+    #endregion
+
+    private void CreateItemAtTransform(Transform itemTransform)
+    {
+        if (itemPrefab == null || itemTransform == null)
+            return;
+       
+        if (itemTransform.childCount == 0)
+        {
+            GameObject item = Instantiate(itemPrefab, itemTransform.position, Quaternion.identity);
+            item.transform.SetParent(itemTransform);
+
+            InitializeSpriteRenderers(item);
+            ResetAllValues();
+        }
+    }
+
+    private void InitializeSpriteRenderers(GameObject item)
+    {
+        coneSpriteRenderers = new SpriteRenderer[9];
+
+        for (int i = 0; i < maxFlavors; i++)
+        {
+            coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
+            coneSpriteRenderers[i].sprite = null;
+        }
+
+        for (int i = 3; i < 7; i++)
+        {
+            coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
+            coneSpriteRenderers[i].sprite = null;
+        }
+
+        for (int i = 7; i < 9; i++)
+        {
+            coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
+            coneSpriteRenderers[i].sprite = null;
+        }
+    }
+
+    private void ResetAllValues()
+    {
+        chosenMaxFlavors = false;
+        chosenSauce = false;
+        chosenTopping = false;
+
+        flavors.Clear();
+        sauces.Clear();
+        toppings.Clear();
+
+        currentFlavorCount = 0;
     }
 }
