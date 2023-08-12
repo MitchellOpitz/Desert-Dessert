@@ -26,7 +26,6 @@ public class ItemController : MonoBehaviour
 
     private GameObject currentItem;
     private bool holdingItem;
-    private bool chosenMaxFlavors;
     private bool chosenSauce;
     private bool chosenTopping;
     private bool canMoveOntoNextItem;
@@ -87,28 +86,25 @@ public class ItemController : MonoBehaviour
 
     private void OnChooseFlavor(InputAction.CallbackContext context)
     {
-        if (context.performed && !chosenMaxFlavors && (!chosenSauce || !chosenTopping))
+        if (context.performed && (!chosenSauce || !chosenTopping))
         {
             int chosenFlavorIndex = GetChosenFlavorIndex();
             if (chosenFlavorIndex != -1)
             {
-                if (chosenSauce || chosenTopping)
+                if (chosenSauce || chosenTopping || currentFlavorCount == maxFlavors)
                     return;
 
                 ChooseFlavor(chosenFlavorIndex);
 
                 if (currentFlavorCount >= 1)
                     canMoveOntoNextItem = true;
-
-                if (currentFlavorCount == maxFlavors)
-                    chosenMaxFlavors = true;
             }
         }
     }
 
     private void OnChooseSauce(InputAction.CallbackContext context)
     {
-        if (context.performed && !chosenSauce && (canMoveOntoNextItem || chosenMaxFlavors))
+        if (context.performed && !chosenSauce && canMoveOntoNextItem)
         {
           int chosenSauceIndex = GetChosenSauceIndex();
             if (chosenSauceIndex != -1)
@@ -121,7 +117,7 @@ public class ItemController : MonoBehaviour
 
     private void OnChooseTopping(InputAction.CallbackContext context)
     {
-        if (context.performed && !chosenTopping && (canMoveOntoNextItem || chosenMaxFlavors))
+        if (context.performed && !chosenTopping && canMoveOntoNextItem)
         {
             int chosenToppingIndex = GetChosenToppingIndex();
             if (chosenToppingIndex != -1)
@@ -242,9 +238,12 @@ public class ItemController : MonoBehaviour
 
     private void PickUpItem(Transform pickUpTransform)
     {
-        currentItem = pickUpTransform.GetChild(0).gameObject;
-        currentItem.transform.SetParent(null);
-        holdingItem = true;
+        if (pickUpTransform.childCount > 0)
+        {
+            currentItem = pickUpTransform.GetChild(0).gameObject;
+            currentItem.transform.SetParent(null);
+            holdingItem = true;
+        }
     }
 
     private void DragItem()
@@ -307,7 +306,6 @@ public class ItemController : MonoBehaviour
 
     private void ResetAllValues()
     {
-        chosenMaxFlavors = false;
         chosenSauce = false;
         chosenTopping = false;
 
