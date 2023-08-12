@@ -696,6 +696,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Pause Button",
+            "id": "6947d871-e809-48b6-88c9-5a0a2a061079",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "bffa95bf-2a9d-400a-9661-c3e952364f2b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d6ebdb2c-3cdd-4d42-8488-b5204d4945e6",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f08c9093-5afa-43af-9693-714ec8d8b814",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
