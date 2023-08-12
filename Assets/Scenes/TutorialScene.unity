@@ -384,8 +384,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47086393}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &81638775
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +902,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8712095902364360438, guid: ca4ab98f52c129e4e8faf70466e50880, type: 3}
   m_PrefabInstance: {fileID: 255405077}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &317452060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,12 +1240,9 @@ GameObject:
   - component: {fileID: 492730021}
   - component: {fileID: 492730020}
   - component: {fileID: 492730019}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 492730023}
   - component: {fileID: 492730022}
   - component: {fileID: 492730024}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1321,8 +1315,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!114 &492730022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1445,6 @@ MonoBehaviour:
   Car: {fileID: 928103400}
   LeadingTarget: {fileID: 928103400}
   carRB: {fileID: 928103403}
->>>>>>> Stashed changes
 --- !u!1 &519265152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,19 +1479,11 @@ RectTransform:
   m_Father: {fileID: 1110246698}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.000045776367}
-  m_SizeDelta: {x: 124.92151, y: 23.422798}
-  m_Pivot: {x: 1, y: 0}
-=======
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 311.85, y: -525}
   m_SizeDelta: {x: 623.69, y: 43.6547}
   m_Pivot: {x: 0.5, y: 0}
->>>>>>> Stashed changes
 --- !u!114 &519265154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,8 +1578,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519265152}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &575979366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1949,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8712095902364360438, guid: ca4ab98f52c129e4e8faf70466e50880, type: 3}
   m_PrefabInstance: {fileID: 621632911}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &698945975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,8 +1985,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1.1845093, y: -50.435783}
   m_SizeDelta: {x: -2.3691, y: 100.8725}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &764605018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2229,7 +2207,6 @@ MonoBehaviour:
   m_DefaultActionMap: Tutorial
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &792651248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,8 +2467,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816890674}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &848537389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,7 +2969,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 2.5}
   m_EdgeRadius: 0
->>>>>>> Stashed changes
 --- !u!1 &900901167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,8 +3069,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &907126378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3670,7 +3642,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8712095902364360438, guid: ca4ab98f52c129e4e8faf70466e50880, type: 3}
   m_PrefabInstance: {fileID: 1108133948}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1110246697
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,8 +3679,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0011125, y: 0}
   m_SizeDelta: {x: 779.63, y: 195.672}
   m_Pivot: {x: 0.5, y: 1}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &1206630813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4184,7 +4153,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1882700739643880821, guid: ffd190357efd2c448805572abfbc2d51, type: 3}
   m_PrefabInstance: {fileID: 1396898129}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1410498610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,8 +4261,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410498610}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!114 &1410498615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4433,7 +4399,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8712095902364360438, guid: ca4ab98f52c129e4e8faf70466e50880, type: 3}
   m_PrefabInstance: {fileID: 1475903122}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1482399093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4491,19 +4456,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< Updated upstream
-  m_text: '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-    excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-    officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem
-    rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
-    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere
-    possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-    quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
-    voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic
-    tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur
-    aut perferendis doloribus asperiores repellat."'
-=======
   m_text: "07/15/20XX\r\nDear Margaret,\r\n\r\nI just couldn't take it anymore. The
     jingle of the ice cream truck does not spark want children's eyes anymore, and
     my pockets are empty because of it. I have nothing and need to do something.
@@ -4511,7 +4463,6 @@ MonoBehaviour:
     where children still love their friendly neighborhood ice cream truck. I know
     I may sound crazy, but desperate times call for desperate measures, Margret.
     Wish me luck."
->>>>>>> Stashed changes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3bf0199a4c653045ad5bf7f085fb15b, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4588,8 +4539,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482399093}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &1522109980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5076,7 +5025,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673024557}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &1681165715
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,8 +5101,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681165715}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &1681308464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5748,7 +5694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6957c32d89de734a994e545209b82f8, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &1844558147
 GameObject:
   m_ObjectHideFlags: 0
@@ -5839,8 +5784,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844558147}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1849573879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6038,7 +5981,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6315679881212596471, guid: 22a6c1ddcf6c67f41870f1ae488aba9d, type: 3}
   m_PrefabInstance: {fileID: 1819227889}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &1937165175
 GameObject:
   m_ObjectHideFlags: 0
@@ -6083,10 +6025,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDescriptionGameObject: {fileID: 1410498610}
-<<<<<<< Updated upstream
-  gameDescriptionText: {fileID: 1482399095}
---- !u!1 &2146590831
-=======
   drivingTestScene: {fileID: 1599261545}
   drivingControlsDisplayGameObject: {fileID: 1953771184}
   serveControlsDisplayGameObject: {fileID: 122764304}
@@ -6096,7 +6034,6 @@ MonoBehaviour:
   hasDrivingControlPopupBeenDisplayed: 0
   tutorialPlayerInput: {fileID: 771503481}
 --- !u!1 &1953771184
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6104,13 +6041,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
-  - component: {fileID: 2146590834}
-  - component: {fileID: 2146590833}
-  - component: {fileID: 2146590832}
-  m_Layer: 0
-  m_Name: EventSystem
-=======
   - component: {fileID: 1953771185}
   - component: {fileID: 1953771186}
   m_Layer: 5
@@ -6227,7 +6157,6 @@ GameObject:
   - component: {fileID: 2062820909}
   m_Layer: 5
   m_Name: W
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
