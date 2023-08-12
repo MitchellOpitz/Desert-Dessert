@@ -11,11 +11,15 @@ public class CarController : MonoBehaviour
     Vector2 MovementInput;
 
     [Header("Acceleration")]
-    [SerializeField] float AccelerationSpeed;
-    
+    [SerializeField]
+    float AccelerationSpeed;
+
     [Header("Steering")]
-    [SerializeField] float SteeringSpeed;
-    [SerializeField] float DriftFactor;
+    [SerializeField]
+    float SteeringSpeed;
+
+    [SerializeField]
+    float DriftFactor;
     float RotationAngle = 0;
 
     void Awake()
@@ -31,15 +35,18 @@ public class CarController : MonoBehaviour
         KillHorizontalVelocity();
     }
 
-    public void SetMovementInput(InputAction.CallbackContext Context) {
+    public void SetMovementInput(InputAction.CallbackContext Context)
+    {
         MovementInput = Context.ReadValue<Vector2>();
     }
 
-    void Accelerate() {
+    void Accelerate()
+    {
         RB.AddForce(transform.up * MovementInput.y * AccelerationSpeed);
     }
 
-    void Steer() {
+    void Steer()
+    {
         float MinimumSpeedBeforeAllowingTurning = RB.velocity.magnitude / 8;
         MinimumSpeedBeforeAllowingTurning = Mathf.Clamp01(MinimumSpeedBeforeAllowingTurning);
 
@@ -47,7 +54,8 @@ public class CarController : MonoBehaviour
         RB.MoveRotation(RotationAngle);
     }
 
-    void KillHorizontalVelocity() { // To simply add friction
+    void KillHorizontalVelocity()
+    { // To simply add friction
         Vector2 ForwardVelocity = transform.up * Vector2.Dot(RB.velocity, transform.up);
         Vector2 HorizontalVelocity = transform.right * Vector2.Dot(RB.velocity, transform.right);
 
