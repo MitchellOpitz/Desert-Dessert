@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraBasicFollow : MonoBehaviour
 {
+
     [SerializeField]
     private Transform Car;
 
