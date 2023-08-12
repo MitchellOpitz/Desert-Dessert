@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class CameraBasicFollow : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [SerializeField] Transform Target;
-    void LateUpdate() {
-        transform.position = Target.position + new Vector3(0, 0, -10);
-        transform.rotation = Target.rotation;
-=======
+
     [SerializeField]
     private Transform Car;
 
@@ -31,11 +26,11 @@ public class CameraBasicFollow : MonoBehaviour
             speedLeadFactor = 0;
         }
         speedLeadFactor -= 0.3f;
+        Debug.Log(speedLeadFactor);
 
         adjustedTarget = Vector3.Lerp(Car.position, LeadingTarget.position, speedLeadFactor);
 
         transform.position = adjustedTarget + new Vector3(0, 0, -10);
         transform.rotation = Car.rotation;
->>>>>>> Stashed changes
     }
 }

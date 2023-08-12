@@ -1,10 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    //create static instance of this class
+    public static TutorialManager Instance { get; private set; }
+
     [Header("Popup GameObjects")]
     [SerializeField] private GameObject gameDescriptionGameObject;
     [SerializeField] private GameObject drivingTestScene;
@@ -16,7 +18,6 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Descriptions")]
     [Space(10)]
-    [SerializeField] private TextMeshProUGUI gameDescriptionText;
     [SerializeField] private TextMeshProUGUI drivingControlsDescriptionText;
     [SerializeField] private TextMeshProUGUI serveControlsDescriptionText;
 
@@ -26,29 +27,43 @@ public class TutorialManager : MonoBehaviour
     public bool hasDrivingControlPopupBeenDisplayed;
     private bool hasServeControlPopupBeenDisplayed;
 
+    [SerializeField] private TutorialPlayerInput tutorialPlayerInput;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     private void Start()
     {
-<<<<<<< Updated upstream
-        gameDescriptionGameObject.SetActive(false);
-        drivingControlsDisplayGameObject.SetActive(false);
-        serveControlsDisplayGameObject.SetActive(false);
-=======
         DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
 
-        /*DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
-        hasDrivingControlPopupBeenDisplayed = true;
+        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
 
-        DisplayPopup(serveControlsDisplayGameObject); //do this after serve scene transition
-        hasServeControlPopupBeenDisplayed = true;
->>>>>>> Stashed changes
+        DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
 
-        drivingControlsCanvasGroup = drivingControlsDisplayGameObject.GetComponent<CanvasGroup>();
-        serveControlsCanvasGroup = serveControlsDisplayGameObject.GetComponent<CanvasGroup>();*/
+        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
+    }
+
+    private void OnEnable()
+    {
+        tutorialPlayerInput.OnAllKeysPressed += FadeOutDrivingTutorial;
+        tutorialPlayerInput.OnMouseButtonClicked += FadeOutServeTutorial;
+    }
+
+    private void OnDisable()
+    {
+        tutorialPlayerInput.OnAllKeysPressed -= FadeOutDrivingTutorial;
+        tutorialPlayerInput.OnMouseButtonClicked -= FadeOutServeTutorial;
     }
 
     //change to events later on
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.K))
             DisplayPopup(gameDescriptionGameObject, gameDescriptionText);
 
@@ -63,27 +78,14 @@ public class TutorialManager : MonoBehaviour
             DisplayPopup(serveControlsDisplayGameObject, serveControlsDescriptionText);
             hasServeControlPopupBeenDisplayed = true;
         }
-            
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A)
-            || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        {
-            if (hasDrivingControlPopupBeenDisplayed)
-                StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup));
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (hasServeControlPopupBeenDisplayed)
-                StartCoroutine(FadeOutPopup(serveControlsCanvasGroup));
-        }
+        */
     }
 
-<<<<<<< Updated upstream
     private void DisplayText(GameObject popup, string text)
     {
         if (popup != null)
             popup.GetComponentInChildren<TextMeshProUGUI>().text = text;
-=======
+    }
     private void LateUpdate() {
         if(gameDescriptionGameObject.active == false && hasDrivingControlPopupBeenDisplayed == false) {
             DisplayPopup(drivingControlsDisplayGameObject);
@@ -100,20 +102,21 @@ public class TutorialManager : MonoBehaviour
             mainCamera.GetComponent<CameraBasicFollow>().enabled = false;
             StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup, 4f));
         }
->>>>>>> Stashed changes
     }
 
-    public void DisplayPopup(GameObject popup, TextMeshProUGUI popupText)
+    private void FadeOutServeTutorial()
     {
-        popup.SetActive(true);
-        DisplayText(popup, popupText.text);
+        if (tutorialPlayerInput.MouseButtonClicked() && hasServeControlPopupBeenDisplayed)
+            StartCoroutine(FadeOutPopup(serveControlsCanvasGroup, 4f));
     }
+
+    public void DisplayPopup(GameObject popup) => popup.SetActive(true);
 
     public void ClosePopup(GameObject popup) => popup.SetActive(false);
 
-    private IEnumerator FadeOutPopup(CanvasGroup canvasGroup)
+    private IEnumerator FadeOutPopup(CanvasGroup canvasGroup, float secondsBeforeFadeStarts)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(secondsBeforeFadeStarts);
 
         canvasGroup.alpha = 1f;
 

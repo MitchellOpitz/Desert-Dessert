@@ -4,14 +4,29 @@ using UnityEngine;
 public class RoadGeneration : MonoBehaviour
 {
     [Header("Generation Parameters")]
-    [SerializeField] float TurnProbability;
-    [SerializeField] float TileSize;
-    [SerializeField] int MinMapSize;
-    [SerializeField] int MaxMapSize;
-    [SerializeField] Transform EndTransform;
-    [SerializeField] GameObject StraightRoadPrefab;
-    [SerializeField] GameObject RightTurnPrefab;
-    [SerializeField] GameObject LeftTurnPrefab;
+    [SerializeField]
+    float TurnProbability;
+
+    [SerializeField]
+    float TileSize;
+
+    [SerializeField]
+    int MinMapSize;
+
+    [SerializeField]
+    int MaxMapSize;
+
+    [SerializeField]
+    Transform EndTransform;
+
+    [SerializeField]
+    GameObject StraightRoadPrefab;
+
+    [SerializeField]
+    GameObject RightTurnPrefab;
+
+    [SerializeField]
+    GameObject LeftTurnPrefab;
 
     Vector2 CurrentGridPosition;
     Vector2 EndGridPosition;
@@ -28,8 +43,11 @@ public class RoadGeneration : MonoBehaviour
 
     HashSet<Vector2> OccupiedPositions = new HashSet<Vector2>();
 
-    [SerializeField] GameObject BackgroundGraphics;
-    [SerializeField] float BGSize;
+    [SerializeField]
+    GameObject BackgroundGraphics;
+
+    [SerializeField]
+    float BGSize;
 
     void Start()
     {
@@ -64,7 +82,10 @@ public class RoadGeneration : MonoBehaviour
         float RandomValue = Random.value;
 
         Vector2 targetDirection = (EndGridPosition - CurrentGridPosition).normalized;
-        float angleToTarget = Vector2.SignedAngle(DirectionChanges[CurrentGridRotation], targetDirection);
+        float angleToTarget = Vector2.SignedAngle(
+            DirectionChanges[CurrentGridRotation],
+            targetDirection
+        );
 
         if (RandomValue < TurnProbability || Mathf.Abs(angleToTarget) > 45f)
         {
@@ -76,7 +97,7 @@ public class RoadGeneration : MonoBehaviour
                 if (angleToTarget > 0f)
                 {
                     prefab = RightTurnPrefab;
-                    rotation = CurrentGridRotation + 270f;
+                    rotation = CurrentGridRotation + 90f;
                     CurrentGridRotation = (CurrentGridRotation + 270f) % 360f;
                 }
                 else
@@ -93,7 +114,8 @@ public class RoadGeneration : MonoBehaviour
             }
 
             Quaternion prefabRotation = Quaternion.Euler(new Vector3(0, 0, rotation));
-            Vector2 newPosition = CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
+            Vector2 newPosition =
+                CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
 
             if (!OccupiedPositions.Contains(newPosition) && IsWithinBounds(newPosition))
             {
@@ -108,11 +130,16 @@ public class RoadGeneration : MonoBehaviour
         }
         else
         {
-            Vector2 newPosition = CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
+            Vector2 newPosition =
+                CurrentGridPosition + DirectionChanges[CurrentGridRotation] * TileSize;
 
             if (!OccupiedPositions.Contains(newPosition) && IsWithinBounds(newPosition))
             {
-                Instantiate(StraightRoadPrefab, CurrentGridPosition, Quaternion.Euler(new Vector3(0, 0, CurrentGridRotation)));
+                Instantiate(
+                    StraightRoadPrefab,
+                    CurrentGridPosition,
+                    Quaternion.Euler(new Vector3(0, 0, CurrentGridRotation))
+                );
                 OccupiedPositions.Add(CurrentGridPosition);
                 CurrentGridPosition = newPosition;
             }
@@ -127,15 +154,25 @@ public class RoadGeneration : MonoBehaviour
 
     bool IsWithinBounds(Vector2 position)
     {
-        return position.x >= 0 && position.x <= MaxMapSize * TileSize && position.y >= 0 && position.y <= MaxMapSize * TileSize;
+        return position.x >= 0
+            && position.x <= MaxMapSize * TileSize
+            && position.y >= 0
+            && position.y <= MaxMapSize * TileSize;
     }
 
-    void GenerateBackground() {
-        for(float y = -MaxMapSize; y < (MaxMapSize / 0.5f * BGSize); y += BGSize) {
-            for(float x = -MaxMapSize; x < (MaxMapSize / 0.5f * BGSize); x += BGSize) {
-                Instantiate(BackgroundGraphics, new Vector3(x, y, 0), Quaternion.identity, transform.Find("BG"));
+    void GenerateBackground()
+    {
+        for (float y = -MaxMapSize; y < (MaxMapSize / 0.5f * BGSize); y += BGSize)
+        {
+            for (float x = -MaxMapSize; x < (MaxMapSize / 0.5f * BGSize); x += BGSize)
+            {
+                Instantiate(
+                    BackgroundGraphics,
+                    new Vector3(x, y, 0),
+                    Quaternion.identity,
+                    transform.Find("BG")
+                );
             }
         }
     }
-
 }
