@@ -84,6 +84,8 @@ public class ItemController : MonoBehaviour
         CreateItemAtTransform(placeConeTransform);
     }
 
+    #region Flavors
+
     private void OnChooseFlavor(InputAction.CallbackContext context)
     {
         if (context.performed && (!chosenSauce || !chosenTopping))
@@ -98,32 +100,6 @@ public class ItemController : MonoBehaviour
 
                 if (currentFlavorCount >= 1)
                     canMoveOntoNextItem = true;
-            }
-        }
-    }
-
-    private void OnChooseSauce(InputAction.CallbackContext context)
-    {
-        if (context.performed && !chosenSauce && canMoveOntoNextItem)
-        {
-          int chosenSauceIndex = GetChosenSauceIndex();
-            if (chosenSauceIndex != -1)
-            {
-                ChooseSauce(chosenSauceIndex);
-                chosenSauce = true;
-            }
-        }
-    }
-
-    private void OnChooseTopping(InputAction.CallbackContext context)
-    {
-        if (context.performed && !chosenTopping && canMoveOntoNextItem)
-        {
-            int chosenToppingIndex = GetChosenToppingIndex();
-            if (chosenToppingIndex != -1)
-            {
-                ChooseTopping(chosenToppingIndex);
-                chosenTopping = true;
             }
         }
     }
@@ -154,6 +130,22 @@ public class ItemController : MonoBehaviour
         return -1;
     }
 
+    #endregion
+
+    #region Sauces
+    private void OnChooseSauce(InputAction.CallbackContext context)
+    {
+        if (context.performed && !chosenSauce && canMoveOntoNextItem)
+        {
+          int chosenSauceIndex = GetChosenSauceIndex();
+            if (chosenSauceIndex != -1)
+            {
+                ChooseSauce(chosenSauceIndex);
+                chosenSauce = true;
+            }
+        }
+    }
+
     private void ChooseSauce(int sauceIndex)
     {
         if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
@@ -180,6 +172,22 @@ public class ItemController : MonoBehaviour
             }
         }
         return -1;
+    }
+
+    #endregion
+
+    #region Toppings
+    private void OnChooseTopping(InputAction.CallbackContext context)
+    {
+        if (context.performed && !chosenTopping && canMoveOntoNextItem)
+        {
+            int chosenToppingIndex = GetChosenToppingIndex();
+            if (chosenToppingIndex != -1)
+            {
+                ChooseTopping(chosenToppingIndex);
+                chosenTopping = true;
+            }
+        }
     }
 
     private void ChooseTopping(int toppingIndex)
@@ -209,6 +217,8 @@ public class ItemController : MonoBehaviour
         }
         return -1;
     }
+
+    #endregion
 
     #region Mouse Input
     private void OnMouseClick()
@@ -266,6 +276,7 @@ public class ItemController : MonoBehaviour
 
     #endregion
 
+    #region Item Handling
     private void CreateItemAtTransform(Transform itemTransform)
     {
         if (itemPrefab == null || itemTransform == null)
@@ -285,19 +296,7 @@ public class ItemController : MonoBehaviour
     {
         coneSpriteRenderers = new SpriteRenderer[9];
 
-        for (int i = 0; i < maxFlavors; i++)
-        {
-            coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
-            coneSpriteRenderers[i].sprite = null;
-        }
-
-        for (int i = 3; i < 7; i++)
-        {
-            coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
-            coneSpriteRenderers[i].sprite = null;
-        }
-
-        for (int i = 7; i < 9; i++)
+        for (int i = 0; i < 9; i++)
         {
             coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
             coneSpriteRenderers[i].sprite = null;
@@ -315,4 +314,6 @@ public class ItemController : MonoBehaviour
 
         currentFlavorCount = 0;
     }
+
+    #endregion
 }
