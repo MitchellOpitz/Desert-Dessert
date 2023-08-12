@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AccelerationSpeed: 10
   SteeringSpeed: 2.5
-  DriftFactor: 0.8
+  DriftFactor: 0.75
 --- !u!114 &272961746
 MonoBehaviour:
   m_ObjectHideFlags: 0
