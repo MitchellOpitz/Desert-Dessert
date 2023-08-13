@@ -9,7 +9,6 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Popup GameObjects")]
     [SerializeField] private GameObject gameDescriptionGameObject;
-    [SerializeField] private GameObject drivingTestScene;
     [SerializeField] private GameObject drivingControlsDisplayGameObject;
     [SerializeField] private GameObject serveControlsDisplayGameObject;
 
@@ -21,11 +20,17 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI drivingControlsDescriptionText;
     [SerializeField] private TextMeshProUGUI serveControlsDescriptionText;
 
+    [Header("Test Scenes")]
+    [Space(10)]
+    [SerializeField] private GameObject drivingTestScene;
+    [SerializeField] private GameObject servingTestScene;
+    [SerializeField] private GameObject endZone;
+
     private CanvasGroup drivingControlsCanvasGroup;
     private CanvasGroup serveControlsCanvasGroup;
 
-    public bool hasDrivingControlPopupBeenDisplayed;
-    private bool hasServeControlPopupBeenDisplayed;
+    public bool hasDrivingControlPopupBeenDisplayed = false;
+    private bool hasServeControlPopupBeenDisplayed = false;
 
     [SerializeField] private TutorialPlayerInput tutorialPlayerInput;
 
@@ -40,12 +45,6 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
-
-        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
-
-        DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
-
-        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
     }
 
     private void OnEnable()
@@ -87,17 +86,26 @@ public class TutorialManager : MonoBehaviour
             popup.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
     private void LateUpdate() {
-        if(gameDescriptionGameObject.active == false && hasDrivingControlPopupBeenDisplayed == false) {
+        if(gameDescriptionGameObject.activeInHierarchy == false && hasDrivingControlPopupBeenDisplayed == false) {
             DisplayPopup(drivingControlsDisplayGameObject);
             drivingTestScene.SetActive(true);
             mainCamera.GetComponent<CameraBasicFollow>().enabled = true;
             hasDrivingControlPopupBeenDisplayed = true;
         }
+
+        if(drivingTestScene.activeInHierarchy == false && hasDrivingControlPopupBeenDisplayed == true) {
+            DisplayPopup(serveControlsDisplayGameObject);
+            servingTestScene.SetActive(true);
+            hasServeControlPopupBeenDisplayed = true;
+        }
+        
+        FadeOutDrivingTutorial();
+        FadeOutServeTutorial();
     }
 
     private void FadeOutDrivingTutorial()
     {
-        if (tutorialPlayerInput.AllKeysPressed() && hasDrivingControlPopupBeenDisplayed) {
+        if (endZone.GetComponent<TutorialEndZone>().PlayerFinished && hasDrivingControlPopupBeenDisplayed) {
             drivingTestScene.SetActive(false);
             mainCamera.GetComponent<CameraBasicFollow>().enabled = false;
             StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup, 4f));

@@ -11,7 +11,7 @@ public class TutorialPlayerInput : MonoBehaviour
     public event Action OnAllKeysPressed;
     public event Action OnMouseButtonClicked;
 
-    public void OnMovement(InputAction.CallbackContext context)
+    /*public void OnMovement(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -34,7 +34,7 @@ public class TutorialPlayerInput : MonoBehaviour
         }
     }
 
-    public bool AllKeysPressed() => wasdPressed[0] && wasdPressed[1] && wasdPressed[2] && wasdPressed[3];
+    public bool AllKeysPressed() => wasdPressed[0] && wasdPressed[1] && wasdPressed[2] && wasdPressed[3];*/
 
     public void OnServe(InputAction.CallbackContext context)
     {
