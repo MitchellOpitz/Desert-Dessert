@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    //create static instance of this class
     public static TutorialManager Instance { get; private set; }
 
     [Header("Popup GameObjects")]
@@ -39,13 +38,13 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
+        DisplayPopup(gameDescriptionGameObject);
 
-        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
+        DisplayPopup(drivingControlsDisplayGameObject);
 
-        DisplayPopup(gameDescriptionGameObject); //do this when after transitioning scenes
+        DisplayPopup(gameDescriptionGameObject);
 
-        DisplayPopup(drivingControlsDisplayGameObject); //do this when closing game description popup
+        DisplayPopup(drivingControlsDisplayGameObject);
     }
 
     private void OnEnable()
@@ -60,34 +59,8 @@ public class TutorialManager : MonoBehaviour
         tutorialPlayerInput.OnMouseButtonClicked -= FadeOutServeTutorial;
     }
 
-    //change to events later on
-    private void Update()
-    {
-        /*
-        if (Input.GetKeyDown(KeyCode.K))
-            DisplayPopup(gameDescriptionGameObject, gameDescriptionText);
-
-        if (Input.GetKeyDown(KeyCode.L) && !hasDrivingControlPopupBeenDisplayed)
-        {
-            DisplayPopup(drivingControlsDisplayGameObject, drivingControlsDescriptionText);
-            hasDrivingControlPopupBeenDisplayed = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.J) && !hasServeControlPopupBeenDisplayed)
-        {
-            DisplayPopup(serveControlsDisplayGameObject, serveControlsDescriptionText);
-            hasServeControlPopupBeenDisplayed = true;
-        }
-        */
-    }
-
-    private void DisplayText(GameObject popup, string text)
-    {
-        if (popup != null)
-            popup.GetComponentInChildren<TextMeshProUGUI>().text = text;
-    }
     private void LateUpdate() {
-        if(gameDescriptionGameObject.active == false && hasDrivingControlPopupBeenDisplayed == false) {
+        if(!gameDescriptionGameObject.activeSelf && !hasDrivingControlPopupBeenDisplayed) {
             DisplayPopup(drivingControlsDisplayGameObject);
             drivingTestScene.SetActive(true);
             mainCamera.GetComponent<CameraBasicFollow>().enabled = true;
