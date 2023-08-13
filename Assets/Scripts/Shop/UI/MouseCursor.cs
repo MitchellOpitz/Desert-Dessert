@@ -59,7 +59,7 @@ public class MouseCursor : MonoBehaviour
 
         transform.position = mousePos;
 
-        TiltCursor(mousePos);
+        //TiltCursor(mousePos);
     }
 
     public Vector3 GetMousePosition()
@@ -69,6 +69,7 @@ public class MouseCursor : MonoBehaviour
         return mousePos;
     }
 
+    /*
     private void TiltCursor(Vector3 mousePos)
     {
         foreach (Transform hoverTransform in hoverTiltTransformsList)
@@ -88,6 +89,7 @@ public class MouseCursor : MonoBehaviour
             }
         }
     }
+    */
 
     public void OnMouseClick(InputAction.CallbackContext context)
     {
