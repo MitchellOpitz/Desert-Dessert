@@ -7,9 +7,13 @@ public class QuitGameManager : MonoBehaviour
     [SerializeField]
     GameObject quitConfirmScreen;
 
+    [SerializeField]
+    GameObject webBuildCatchScreen;
+
     private void Start()
     {
         quitConfirmScreen.SetActive(false);
+        webBuildCatchScreen.SetActive(false);
     }
 
     public void QuitGameButton()
@@ -19,7 +23,23 @@ public class QuitGameManager : MonoBehaviour
 
     public void ConfirmQuitYes()
     {
-        Application.Quit();
+        if (
+            Application.platform == RuntimePlatform.WebGLPlayer
+            || Application.platform == RuntimePlatform.WindowsEditor
+        )
+        {
+            webBuildCatchScreen.SetActive(true);
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
+
+    public void WebBuildConfirmButton()
+    {
+        webBuildCatchScreen.SetActive(false);
+        quitConfirmScreen.SetActive(false);
     }
 
     public void ConfirmQuitNo()
