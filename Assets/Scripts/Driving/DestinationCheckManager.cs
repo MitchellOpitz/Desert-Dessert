@@ -13,6 +13,8 @@ public class DestinationCheckManager : MonoBehaviour
 
     private Rigidbody2D playerRB;
 
+    public bool playerReachedDestination { get; private set;}
+
     private void Start()
     {
         playerRB = player.GetComponent<Rigidbody2D>();
@@ -31,6 +33,7 @@ public class DestinationCheckManager : MonoBehaviour
     {
         destinationScreen.SetActive(true);
         playerRB.bodyType = RigidbodyType2D.Static;
+        playerReachedDestination = true;
     }
 
     public void ConfirmServiceStartButton()
