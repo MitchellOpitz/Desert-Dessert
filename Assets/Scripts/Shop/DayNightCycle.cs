@@ -8,10 +8,14 @@ public class DayNightCycle : MonoBehaviour
     private SpriteRenderer backdrop;
 
     [SerializeField] private Sprite[] backDropSprites;
-    [SerializeField] private float dayLength = 180f;
     [SerializeField] private TextMeshProUGUI timeDisplayText;
 
-    private float timeOfDay = 0f;
+    private float currentTime = 12.0f;
+    private const float endTime = 20.0f;
+    private float timer = 0.0f;
+    private float incrementInterval = 45.0f;
+
+    private int currentBackdropIndex = 0;
 
     private void Awake()
     {
@@ -20,48 +24,51 @@ public class DayNightCycle : MonoBehaviour
 
     private void Update()
     {
-        CountTimeOfDay();
+        timer += Time.deltaTime;
+
+        if (timer >= incrementInterval)
+        {
+            IncrementTime();
+            UpdateBackdrop();
+            timer = 0.0f;
+        }
+
         UpdateTimeDisplay();
-        UpdateBackdrop();
     }
 
-    private void CountTimeOfDay()
+    private void IncrementTime()
     {
-        timeOfDay += Time.deltaTime;
+        currentTime += 2.0f;
+        if (currentTime > endTime)
+            currentTime = endTime;
 
-        if (timeOfDay > dayLength)
-            timeOfDay = 0f;
+        if (currentTime >= endTime)
+            currentTime = 12.0f;
     }
 
     private void UpdateTimeDisplay()
     {
-        float currentTimePercent = (timeOfDay / dayLength);
-        int totalMinutes = Mathf.FloorToInt(currentTimePercent * 13 * 60);
-        int hours = 7 + totalMinutes / 60;
-        int minutes = (totalMinutes % 60) / 30 * 30;
+        int hours = Mathf.FloorToInt(currentTime);
+        int minutes = Mathf.FloorToInt((currentTime - hours) * 60);
+        string amPm = hours < 12 ? "AM" : "PM";
 
-        string amPm = (hours >= 12) ? "PM" : "AM";
-        if (hours > 12)
-            hours -= 12;
+        hours = hours % 12;
+        if (hours == 0)
+            hours = 12;
 
-        string timeText = string.Format("{0:00}:{1:00} {2}", hours, minutes, amPm);
-        timeDisplayText.text = timeText;
+        string timeDisplay = string.Format("{0:00}:{1:00} {2}", hours, minutes, amPm);
+        timeDisplayText.text = timeDisplay;
     }
 
     private void UpdateBackdrop()
     {
-        int hours = 7 + Mathf.FloorToInt(timeOfDay / (dayLength / 15));
-        int backdropIndex = 0;
+        if (timer >= incrementInterval)
+        {
+            currentBackdropIndex++;
+            if (currentBackdropIndex >= backDropSprites.Length)
+                currentBackdropIndex = 0;
 
-        if (hours >= 7 && hours < 12)
-            backdropIndex = 0;
-        else if (hours >= 12 && hours < 17)
-            backdropIndex = 1;
-        else if (hours >= 17 && hours < 20)
-            backdropIndex = 2;
-        else
-            backdropIndex = 3;
-
-        backdrop.sprite = backDropSprites[backdropIndex];
+            backdrop.sprite = backDropSprites[currentBackdropIndex];
+        }
     }
 }
