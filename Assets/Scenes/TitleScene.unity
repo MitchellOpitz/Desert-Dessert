@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quitConfirmScreen: {fileID: 560438491}
+  webBuildCatchScreen: {fileID: 1303171028}
 --- !u!1 &153148164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1333,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258488640}
   m_CullTransparentMesh: 1
+--- !u!1 &1303171028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3852088492222989573, guid: 370d2c3051bff8549829dcabeaf9b77a, type: 3}
+  m_PrefabInstance: {fileID: 7705705290765249092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306325271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,7 +2591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7705705290205673119, guid: 370d2c3051bff8549829dcabeaf9b77a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7705705290801454824, guid: 370d2c3051bff8549829dcabeaf9b77a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2595,6 +2601,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 99980368}
+    - target: {fileID: 7968836258972465680, guid: 370d2c3051bff8549829dcabeaf9b77a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 99980368}
+    - target: {fileID: 7968836258972465680, guid: 370d2c3051bff8549829dcabeaf9b77a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WebBuildConfirmButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 370d2c3051bff8549829dcabeaf9b77a, type: 3}
 --- !u!222 &7994767610620485953
