@@ -2143,7 +2143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 713071776514164345, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
       propertyPath: m_text
-      value: Pixlel Artist
+      value: Pixel Artist
+      objectReference: {fileID: 0}
+    - target: {fileID: 713071777467878873, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
+      propertyPath: m_text
+      value: theboywithmanner
       objectReference: {fileID: 0}
     - target: {fileID: 713071777467878873, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
       propertyPath: m_fontColor.b
@@ -2306,6 +2310,10 @@ PrefabInstance:
       value: Project Manager
       objectReference: {fileID: 0}
     - target: {fileID: 4691167124979355040, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
+      propertyPath: m_text
+      value: CozKa
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691167124979355040, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
       propertyPath: m_fontColor.b
       value: 0.4431373
       objectReference: {fileID: 0}
@@ -2354,6 +2362,10 @@ PrefabInstance:
     - target: {fileID: 8124583084901202596, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
       propertyPath: m_text
       value: Gameplay Programming
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124583085820965124, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
+      propertyPath: m_text
+      value: GoldenPike
       objectReference: {fileID: 0}
     - target: {fileID: 8124583085820965124, guid: 3b66dfa7ccb61f74c9b7c71387a0d17f, type: 3}
       propertyPath: m_fontColor.b

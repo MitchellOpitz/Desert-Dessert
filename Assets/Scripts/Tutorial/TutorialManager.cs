@@ -7,18 +7,23 @@ public class TutorialManager : MonoBehaviour
     public static TutorialManager Instance { get; private set; }
 
     [Header("Popup GameObjects")]
-    [SerializeField] private GameObject gameDescriptionGameObject;
-    [SerializeField] private GameObject drivingTestScene;
-    [SerializeField] private GameObject drivingControlsDisplayGameObject;
-    [SerializeField] private GameObject serveControlsDisplayGameObject;
+    [SerializeField]
+    private GameObject gameDescriptionGameObject;
+
+    [SerializeField]
+    private GameObject drivingTestScene;
+
+    [SerializeField]
+    private GameObject serveControlsDisplayGameObject;
 
     [Header("References")]
-    [SerializeField] private Camera mainCamera;
+    [SerializeField]
+    private Camera mainCamera;
 
     [Header("Descriptions")]
     [Space(10)]
-    [SerializeField] private TextMeshProUGUI drivingControlsDescriptionText;
-    [SerializeField] private TextMeshProUGUI serveControlsDescriptionText;
+    [SerializeField]
+    private TextMeshProUGUI serveControlsDescriptionText;
 
     private CanvasGroup drivingControlsCanvasGroup;
     private CanvasGroup serveControlsCanvasGroup;
@@ -26,7 +31,8 @@ public class TutorialManager : MonoBehaviour
     public bool hasDrivingControlPopupBeenDisplayed;
     private bool hasServeControlPopupBeenDisplayed;
 
-    [SerializeField] private TutorialPlayerInput tutorialPlayerInput;
+    [SerializeField]
+    private TutorialPlayerInput tutorialPlayerInput;
 
     private void Awake()
     {
@@ -40,11 +46,7 @@ public class TutorialManager : MonoBehaviour
     {
         DisplayPopup(gameDescriptionGameObject);
 
-        DisplayPopup(drivingControlsDisplayGameObject);
-
         DisplayPopup(gameDescriptionGameObject);
-
-        DisplayPopup(drivingControlsDisplayGameObject);
     }
 
     private void OnEnable()
@@ -59,9 +61,10 @@ public class TutorialManager : MonoBehaviour
         tutorialPlayerInput.OnMouseButtonClicked -= FadeOutServeTutorial;
     }
 
-    private void LateUpdate() {
-        if(!gameDescriptionGameObject.activeSelf && !hasDrivingControlPopupBeenDisplayed) {
-            DisplayPopup(drivingControlsDisplayGameObject);
+    private void LateUpdate()
+    {
+        if (!gameDescriptionGameObject.activeSelf && !hasDrivingControlPopupBeenDisplayed)
+        {
             drivingTestScene.SetActive(true);
             mainCamera.GetComponent<CameraBasicFollow>().enabled = true;
             hasDrivingControlPopupBeenDisplayed = true;
@@ -70,7 +73,8 @@ public class TutorialManager : MonoBehaviour
 
     private void FadeOutDrivingTutorial()
     {
-        if (tutorialPlayerInput.AllKeysPressed() && hasDrivingControlPopupBeenDisplayed) {
+        if (tutorialPlayerInput.AllKeysPressed() && hasDrivingControlPopupBeenDisplayed)
+        {
             drivingTestScene.SetActive(false);
             mainCamera.GetComponent<CameraBasicFollow>().enabled = false;
             StartCoroutine(FadeOutPopup(drivingControlsCanvasGroup, 4f));

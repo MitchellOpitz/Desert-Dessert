@@ -735,6 +735,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UIButtonOverlay",
+            "id": "903292a7-a42b-4d38-a945-5b2b9485fd58",
+            "actions": [
+                {
+                    "name": "ShowControlOverlay",
+                    "type": "PassThrough",
+                    "id": "dae62575-070a-4c56-8d74-8b47a4b09b9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.16,pressPoint=0.5)",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a1b92644-c908-427c-8cb6-de5cfe140af1",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowControlOverlay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
