@@ -1554,6 +1554,30 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: DropCone
+    clip: {fileID: 8300000, guid: 2815c8dca967f414e90d7a84e1565fdf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ScoopIceCream
+    clip: {fileID: 8300000, guid: 782321f16248f564db906d6ac49c9e5e, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DropSyrup
+    clip: {fileID: 8300000, guid: 00a8a9ea40191364287265071efa40e4, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DropSprinkles
+    clip: {fileID: 8300000, guid: 125a992c5217234449d7d1eb4aedb975, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1499096047
 GameObject:
   m_ObjectHideFlags: 0
