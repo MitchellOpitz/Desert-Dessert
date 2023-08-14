@@ -6,6 +6,7 @@ public class SlimeSquish : MonoBehaviour
 {
     [SerializeField] GameObject SquishedSlime;
     void OnCollisionEnter2D(Collision2D Hitbox) {
+        FindObjectOfType<AudioManager>().PlaySound("RunOverJelly");
         transform.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         SquishedSlime.GetComponent<SpriteRenderer>().enabled = true;
         
