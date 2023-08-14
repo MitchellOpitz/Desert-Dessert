@@ -565,6 +565,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bffa95bf-2a9d-400a-9661-c3e952364f2b
     m_ActionName: Pause Button/New action[/Keyboard/escape,/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dae62575-070a-4c56-8d74-8b47a4b09b9d
+    m_ActionName: UIButtonOverlay/ShowControlOverlay[/Keyboard/tab,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Car
@@ -608,7 +612,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 23214002e00d0e143bcda21630ee623a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2631,7 +2635,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a01418dc5a51ec40a8706df07a36a13, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.848
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3130,13 +3134,13 @@ MonoBehaviour:
   sounds:
   - name: DrivingMusic
     clip: {fileID: 8300000, guid: 7951310ed87d5024a9eeff28330f1d92, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: RunOverJelly
     clip: {fileID: 8300000, guid: 9a4d362b2cb5d304e865226554f9435f, type: 3}
-    volume: 1
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
