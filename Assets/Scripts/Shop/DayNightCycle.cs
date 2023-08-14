@@ -11,7 +11,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeDisplayText;
 
     private float currentTime = 12.0f;
-    private const float endTime = 20.0f;
+    private const float endTime = 21.0f;
     private float timer = 0.0f;
     private float incrementInterval = 45.0f;
 
@@ -28,8 +28,8 @@ public class DayNightCycle : MonoBehaviour
 
         if (timer >= incrementInterval)
         {
-            IncrementTime();
             UpdateBackdrop();
+            IncrementTime();
             timer = 0.0f;
         }
 
@@ -38,12 +38,9 @@ public class DayNightCycle : MonoBehaviour
 
     private void IncrementTime()
     {
-        currentTime += 2.0f;
+        currentTime += 3.0f;
         if (currentTime > endTime)
             currentTime = endTime;
-
-        if (currentTime >= endTime)
-            currentTime = 12.0f;
     }
 
     private void UpdateTimeDisplay()
@@ -52,7 +49,7 @@ public class DayNightCycle : MonoBehaviour
         int minutes = Mathf.FloorToInt((currentTime - hours) * 60);
         string amPm = hours < 12 ? "AM" : "PM";
 
-        hours = hours % 12;
+        hours %= 12;
         if (hours == 0)
             hours = 12;
 
