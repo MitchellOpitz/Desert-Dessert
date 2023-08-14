@@ -9,6 +9,7 @@ public class DayNightCycle : MonoBehaviour
 
     [SerializeField] private Sprite[] backDropSprites;
     [SerializeField] private TextMeshProUGUI timeDisplayText;
+    [SerializeField] private GameObject endGameScreen;
 
     private float currentTime = 12.0f;
     private const float endTime = 21.0f;
@@ -40,7 +41,11 @@ public class DayNightCycle : MonoBehaviour
     {
         currentTime += 3.0f;
         if (currentTime > endTime)
+        {
             currentTime = endTime;
+            endGameScreen.SetActive(true);
+            Cursor.visible = true;
+        }
     }
 
     private void UpdateTimeDisplay()
