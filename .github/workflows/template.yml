@@ -76,7 +76,7 @@ jobs:
        env:
          BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
          CHANNEL: HTML
-         ITCH_GAME: project-blue-bean
+         ITCH_GAME: desert-dessert
          ITCH_USER: brainfartstudio
          BRANCH: itch-io
          PACKAGE: build/WebGL
