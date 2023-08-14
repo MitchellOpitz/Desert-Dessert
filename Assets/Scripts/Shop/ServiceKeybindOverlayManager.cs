@@ -9,12 +9,36 @@ public class ServiceKeybindOverlayManager : MonoBehaviour
     private GameObject keybindOverlayCanvas;
 
     [SerializeField]
-    private InputActionReference showButtonOverlay;
+    private PlayerControls _playerController;
+
+    private bool showOverlay;
 
     private void Start()
     {
-        keybindOverlayCanvas.SetActive(false);
+        _playerController = new PlayerControls();
+        _playerController.Enable();
+        showOverlay = false;
     }
 
-    public void ShowKeybindWindow() { }
+    private void Update()
+    {
+        if (_playerController.UIButtonOverlay.ShowControlOverlay.ReadValue<float>() != 0)
+        {
+            showOverlay = true;
+        }
+        else
+        {
+            showOverlay = false;
+        }
+
+        if (showOverlay)
+        {
+            keybindOverlayCanvas.SetActive(true);
+            Debug.Log("work plz");
+        }
+        else
+        {
+            keybindOverlayCanvas.SetActive(false);
+        }
+    }
 }
