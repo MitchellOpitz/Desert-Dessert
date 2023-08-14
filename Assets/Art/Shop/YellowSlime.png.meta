@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: 455ccaef7e3a75a49a783d9c70a71dc3
+guid: 7b58e9d9a4565e648bf1a2bc0d6eb164
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5585509059601472093
-    second: DialogueBox_UI_0
+      213: -1452583907149925899
+    second: YellowSlime_0
   - first:
-      213: 5819746505929311503
-    second: DialogueBox_UI_1
+      213: -4679537068152204332
+    second: YellowSlime_1
   - first:
-      213: 3727818043334596485
-    second: DialogueBox_UI_2
+      213: -4966110825831077755
+    second: YellowSlime_2
   - first:
-      213: 7844287211062543055
-    second: DialogueBox_UI_3
+      213: -8056072922674209796
+    second: YellowSlime_3
   - first:
-      213: -6630507072221660323
-    second: DialogueBox_UI_4
+      213: -4604777635680998973
+    second: YellowSlime_4
   - first:
-      213: -1630621558165843127
-    second: DialogueBox_UI_5
+      213: 3610511356117334013
+    second: YellowSlime_5
   - first:
-      213: 232880664671845722
-    second: DialogueBox_UI_6
+      213: -5957460801185914797
+    second: YellowSlime_6
   - first:
-      213: -255843326072132308
-    second: DialogueBox_UI_7
-  - first:
-      213: 4424670997976119032
-    second: DialogueBox_UI_8
+      213: -3324844538857864697
+    second: YellowSlime_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -59,7 +56,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -95,7 +92,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,7 +104,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,7 +116,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DialogueBox_UI_0
+      name: YellowSlime_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 440
-        width: 267
-        height: 185
+        x: 43
+        y: 1737
+        width: 880
+        height: 1632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5a954b75e6b38d40800000000000000
-      internalID: 5585509059601472093
+      spriteID: 5f131efe1a267dbe0800000000000000
+      internalID: -1452583907149925899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_1
+      name: YellowSlime_1
       rect:
         serializedVersion: 2
-        x: 328
-        y: 507
-        width: 246
-        height: 118
+        x: 1278
+        y: 1231
+        width: 881
+        height: 1630
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f05ccb0ec94e3c050800000000000000
-      internalID: 5819746505929311503
+      spriteID: 4d3d38b64d1fe0fb0800000000000000
+      internalID: -4679537068152204332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_2
+      name: YellowSlime_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 240
-        width: 247
-        height: 201
+        x: 2402
+        y: 1911
+        width: 945
+        height: 1401
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 587104472cedbb330800000000000000
-      internalID: 3727818043334596485
+      spriteID: 588ed17f384d41bb0800000000000000
+      internalID: -4966110825831077755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_3
+      name: YellowSlime_3
       rect:
         serializedVersion: 2
-        x: 307
-        y: 394
-        width: 267
-        height: 103
+        x: 2215
+        y: 1354
+        width: 20
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc2c58b58a18cdc60800000000000000
-      internalID: 7844287211062543055
+      spriteID: cfb5c571c54133090800000000000000
+      internalID: -8056072922674209796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_4
+      name: YellowSlime_4
       rect:
         serializedVersion: 2
-        x: 307
-        y: 281
-        width: 267
-        height: 104
+        x: 2685
+        y: 1228
+        width: 205
+        height: 209
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5b338f92f4bbf3a0800000000000000
-      internalID: -6630507072221660323
+      spriteID: 3c92293332b8810c0800000000000000
+      internalID: -4604777635680998973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_5
+      name: YellowSlime_5
       rect:
         serializedVersion: 2
-        x: 404
-        y: 215
-        width: 165
-        height: 83
+        x: 2937
+        y: 1236
+        width: 190
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9435e6e055ede59e0800000000000000
-      internalID: -1630621558165843127
+      spriteID: df733e6f2fc1b1230800000000000000
+      internalID: 3610511356117334013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_6
+      name: YellowSlime_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 46
-        width: 267
-        height: 185
+        x: 91
+        y: 91
+        width: 1160
+        height: 1173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d72dc0bbb5b3300800000000000000
-      internalID: 232880664671845722
+      spriteID: 350effd17f8d25da0800000000000000
+      internalID: -5957460801185914797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_7
+      name: YellowSlime_7
       rect:
         serializedVersion: 2
-        x: 404
-        y: 128
-        width: 165
-        height: 83
+        x: 1754
+        y: 202
+        width: 1608
+        height: 617
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,29 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2de057b9df037cf0800000000000000
-      internalID: -255843326072132308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DialogueBox_UI_8
-      rect:
-        serializedVersion: 2
-        x: 517
-        y: 40
-        width: 52
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f6f65a64d6976d30800000000000000
-      internalID: 4424670997976119032
+      spriteID: 702caf7f187cbd1d0800000000000000
+      internalID: -3324844538857864697
       vertices: []
       indices: 
       edges: []

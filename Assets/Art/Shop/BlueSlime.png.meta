@@ -1,34 +1,28 @@
 fileFormatVersion: 2
-guid: 455ccaef7e3a75a49a783d9c70a71dc3
+guid: 0a6c0ee7c314fda49ab210f105ec5b98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5585509059601472093
-    second: DialogueBox_UI_0
+      213: 3213079785493367381
+    second: BlueSlime_0
   - first:
-      213: 5819746505929311503
-    second: DialogueBox_UI_1
+      213: -8403912912354435786
+    second: BlueSlime_1
   - first:
-      213: 3727818043334596485
-    second: DialogueBox_UI_2
+      213: 3753978272353456313
+    second: BlueSlime_2
   - first:
-      213: 7844287211062543055
-    second: DialogueBox_UI_3
+      213: -5305816896474824778
+    second: BlueSlime_3
   - first:
-      213: -6630507072221660323
-    second: DialogueBox_UI_4
+      213: -2163016933820620931
+    second: BlueSlime_4
   - first:
-      213: -1630621558165843127
-    second: DialogueBox_UI_5
+      213: 3418527084011251722
+    second: BlueSlime_5
   - first:
-      213: 232880664671845722
-    second: DialogueBox_UI_6
-  - first:
-      213: -255843326072132308
-    second: DialogueBox_UI_7
-  - first:
-      213: 4424670997976119032
-    second: DialogueBox_UI_8
+      213: 8676674996904116913
+    second: BlueSlime_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -59,7 +53,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -95,7 +89,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,7 +113,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DialogueBox_UI_0
+      name: BlueSlime_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 440
-        width: 267
-        height: 185
+        x: 49
+        y: 1962
+        width: 991
+        height: 1464
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5a954b75e6b38d40800000000000000
-      internalID: 5585509059601472093
+      spriteID: 55a02519a07279c20800000000000000
+      internalID: 3213079785493367381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_1
+      name: BlueSlime_1
       rect:
         serializedVersion: 2
-        x: 328
-        y: 507
-        width: 246
-        height: 118
+        x: 1136
+        y: 1441
+        width: 991
+        height: 1466
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f05ccb0ec94e3c050800000000000000
-      internalID: 5819746505929311503
+      spriteID: 63d9bc76bbd4f5b80800000000000000
+      internalID: -8403912912354435786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_2
+      name: BlueSlime_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 240
-        width: 247
-        height: 201
+        x: 2331
+        y: 1907
+        width: 1032
+        height: 1325
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 587104472cedbb330800000000000000
-      internalID: 3727818043334596485
+      spriteID: 9b0992a695fc81430800000000000000
+      internalID: 3753978272353456313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_3
+      name: BlueSlime_3
       rect:
         serializedVersion: 2
-        x: 307
-        y: 394
-        width: 267
-        height: 103
+        x: 2328
+        y: 1253
+        width: 222
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc2c58b58a18cdc60800000000000000
-      internalID: 7844287211062543055
+      spriteID: 6bf3a52e4a3fd56b0800000000000000
+      internalID: -5305816896474824778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_4
+      name: BlueSlime_4
       rect:
         serializedVersion: 2
-        x: 307
-        y: 281
-        width: 267
-        height: 104
+        x: 2612
+        y: 1254
+        width: 245
+        height: 206
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5b338f92f4bbf3a0800000000000000
-      internalID: -6630507072221660323
+      spriteID: d7f97701f8b6bf1e0800000000000000
+      internalID: -2163016933820620931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_5
+      name: BlueSlime_5
       rect:
         serializedVersion: 2
-        x: 404
-        y: 215
-        width: 165
-        height: 83
+        x: 49
+        y: 79
+        width: 1155
+        height: 1142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9435e6e055ede59e0800000000000000
-      internalID: -1630621558165843127
+      spriteID: a08ea81554c017f20800000000000000
+      internalID: 3418527084011251722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DialogueBox_UI_6
+      name: BlueSlime_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 46
-        width: 267
-        height: 185
+        x: 1743
+        y: 178
+        width: 1659
+        height: 529
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,50 +264,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d72dc0bbb5b3300800000000000000
-      internalID: 232880664671845722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DialogueBox_UI_7
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 128
-        width: 165
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2de057b9df037cf0800000000000000
-      internalID: -255843326072132308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DialogueBox_UI_8
-      rect:
-        serializedVersion: 2
-        x: 517
-        y: 40
-        width: 52
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f6f65a64d6976d30800000000000000
-      internalID: 4424670997976119032
+      spriteID: 1b2cbfd40fdb96870800000000000000
+      internalID: 8676674996904116913
       vertices: []
       indices: 
       edges: []
