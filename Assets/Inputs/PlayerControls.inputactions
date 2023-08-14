@@ -761,6 +761,17 @@
                     "action": "ShowControlOverlay",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1a1c8a4-2c28-4bb2-bee3-db5e3ebbaac0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowControlOverlay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
