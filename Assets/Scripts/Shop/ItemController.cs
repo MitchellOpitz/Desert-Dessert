@@ -82,6 +82,7 @@ public class ItemController : MonoBehaviour
     private void OnChooseCone(InputAction.CallbackContext context)
     {
         CreateItemAtTransform(placeConeTransform);
+        FindObjectOfType<AudioManager>().PlaySound("DropCone");
     }
 
     #region Flavors
@@ -97,6 +98,7 @@ public class ItemController : MonoBehaviour
                     return;
 
                 ChooseFlavor(chosenFlavorIndex);
+                FindObjectOfType<AudioManager>().PlaySound("ScoopIceCream");
 
                 if (currentFlavorCount >= 1)
                     canMoveOntoNextItem = true;
@@ -138,6 +140,7 @@ public class ItemController : MonoBehaviour
         if (context.performed && !chosenSauce && canMoveOntoNextItem)
         {
           int chosenSauceIndex = GetChosenSauceIndex();
+            FindObjectOfType<AudioManager>().PlaySound("DropSyrup");
             if (chosenSauceIndex != -1)
             {
                 ChooseSauce(chosenSauceIndex);
@@ -182,6 +185,7 @@ public class ItemController : MonoBehaviour
         if (context.performed && !chosenTopping && canMoveOntoNextItem)
         {
             int chosenToppingIndex = GetChosenToppingIndex();
+            FindObjectOfType<AudioManager>().PlaySound("DropSprinkles");
             if (chosenToppingIndex != -1)
             {
                 ChooseTopping(chosenToppingIndex);
