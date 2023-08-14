@@ -7,6 +7,7 @@ TagManager:
   - MenuPivotPoint
   - playerCar
   - finishLine
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -27,10 +27,16 @@ public class CameraBasicFollow : MonoBehaviour
         }
         speedLeadFactor -= 0.3f;
         Debug.Log(speedLeadFactor);
+        UpdateDrivingSound();
 
         adjustedTarget = Vector3.Lerp(Car.position, LeadingTarget.position, speedLeadFactor);
 
         transform.position = adjustedTarget + new Vector3(0, 0, -10);
         transform.rotation = Car.rotation;
+    }
+
+    public void UpdateDrivingSound()
+    {
+         GameObject.Find("DrivingSounds").GetComponent<AudioSource>().pitch = 1 + speedLeadFactor;
     }
 }
