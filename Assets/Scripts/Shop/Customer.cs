@@ -7,6 +7,7 @@ using UnityEngine.Jobs;
 public class Customer : MonoBehaviour
 {
     [Header("Prefabs")]
+    [SerializeField] GameObject CustomerPrefab;
     [SerializeField] GameObject[] SlimeBreeds;
     GameObject CurrentSlime;
 
@@ -30,6 +31,8 @@ public class Customer : MonoBehaviour
     float TotalTime;
     float RandomTimeDuration;
     float Interval = 1f;
+
+    [SerializeField] GameObject ScoreManager;
 
     [Space(10)]
     [SerializeField] List<int> GeneratedFlavours = new List<int>();
@@ -93,22 +96,11 @@ public class Customer : MonoBehaviour
     void UpdateTimer()
     {
         if(Time.time >= TotalTime) {
-            return;
+            transform.gameObject.SetActive(false);
+            Instantiate(CustomerPrefab, transform.position, transform.rotation);
+            Destroy(transform.gameObject);
         }
 
-        if((TotalTime - Time.time) % (RandomTimeDuration / 5) == 0f) {
-            Interval += 1;
-            string Name = CurrentSlime.name + "_" + Interval.ToString();
-            string PreviousName = CurrentSlime.name + "_" + (Interval - 1).ToString();
-
-            Name = Name.Replace("(Clone)", "");
-            PreviousName = PreviousName.Replace("(Clone)", "");
-
-            Debug.Log(Name);
-
-            CurrentSlime.transform.Find(PreviousName).GetComponent<SpriteRenderer>().enabled = false;
-            CurrentSlime.transform.Find(Name).GetComponent<SpriteRenderer>().enabled = true;
-        }
         TimerTransform.rotation = Quaternion.Euler(TimerTransform.rotation.eulerAngles + (Vector3.forward * 180 / RandomTimeDuration * Time.deltaTime));
     }
 
@@ -125,11 +117,15 @@ public class Customer : MonoBehaviour
 
             if (IsCorrect)
             {
-                Debug.Log("Ice cream is correct!");
+                transform.gameObject.SetActive(false);
+                Destroy(Hitbox.gameObject);
+                ScoreManager.GetComponent<ScoreManager>().ChangeScore(10);
+                Instantiate(CustomerPrefab, transform.position, transform.rotation);
+                Destroy(transform.gameObject);
             }
             else
             {
-                Debug.Log("Ice cream is incorrect.");
+                return;
             }
         }
     }
@@ -137,22 +133,31 @@ public class Customer : MonoBehaviour
     bool CheckIceCreamCombination(List<int> Flavors, List<int> Sauces, List<int> Toppings)
     {
         if(Flavors.Count != GeneratedFlavours.Count || Sauces.Count != GeneratedSauces.Count ||  Toppings.Count != GeneratedToppings.Count) {
+            Debug.Log(IceCreamFlavours[Flavors[0]].name);
+            Debug.Log(IceCreamToppings[Toppings[0]].name);
+            Debug.Log(IceCreamSauces[Sauces[0]].name);
             return false;
         }
 
         for(int i = 0; i < Flavors.Count; i ++) {
+            Debug.Log("Recieved Flavor: " + IceCreamFlavours[Flavors[i]].name);
+            Debug.Log("Generated Flavor: " + IceCreamFlavours[GeneratedFlavours[i]].name);
             if(Flavors[i] != GeneratedFlavours[i]) {
                 return false;
             }
         }
 
         for(int i = 0; i < Sauces.Count; i ++) {
+            Debug.Log("Recieved Sauce: " + IceCreamSauces[Sauces[i]].name);
+            Debug.Log("Generated Sauce: " + IceCreamSauces[GeneratedSauces[i]].name);
             if(Sauces[i] != GeneratedSauces[i]) {
                 return false;
             }
         }
 
         for(int i = 0; i < Toppings.Count; i ++) {
+            Debug.Log("Recieved Toppings: " + IceCreamToppings[Toppings[i]].name);
+            Debug.Log("Generated Toppings: " + IceCreamToppings[GeneratedToppings[i]].name);
             if(Toppings[i] != GeneratedToppings[i]) {
                 return false;
             }

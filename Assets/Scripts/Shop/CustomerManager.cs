@@ -5,15 +5,33 @@ using UnityEngine;
 public class CustomerManager : MonoBehaviour
 {
     [SerializeField] GameObject CustomerPrefab;
-    [SerializeField] Vector2 CustomerPosition;
-    [SerializeField] float CustomerOffset;
-    [SerializeField] int CustomerLimit;
-    int CurrentCustomers;
+    [SerializeField] Transform CustomerPositions;
 
-    void Update() {
-        while(CurrentCustomers <= CustomerLimit) {
-            Instantiate(CustomerPrefab, new Vector3(CustomerPosition.x + (CurrentCustomers * CustomerOffset), CustomerPosition.y, 1), Quaternion.identity);
-            CurrentCustomers += 1;
+    private List<GameObject> ActiveCustomers = new List<GameObject>();
+
+    void Start()
+    {
+        CreateInitialCustomers();
+    }
+
+    void Update()
+    {
+        UpdateCustomerPositions();
+    }
+
+    void CreateInitialCustomers()
+    {
+        GameObject Customer = Instantiate(CustomerPrefab, CustomerPositions.position, Quaternion.identity);
+        ActiveCustomers[0] = Customer;
+    }
+
+    void UpdateCustomerPositions()
+    {
+        Debug.Log(ActiveCustomers[0].activeInHierarchy);
+        if (ActiveCustomers[0] == null)
+        {
+            GameObject Customer = Instantiate(CustomerPrefab, CustomerPositions.position, Quaternion.identity);
+            ActiveCustomers[0] = Customer;
         }
     }
 }
