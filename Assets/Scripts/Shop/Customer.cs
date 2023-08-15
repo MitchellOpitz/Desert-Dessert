@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Jobs;
 
 public class Customer : MonoBehaviour
 {
     [Header("Prefabs")]
     [SerializeField] GameObject[] SlimeBreeds;
+    GameObject CurrentSlime;
 
     [Space]
     [SerializeField] GameObject[] IceCreamFlavours;
     [SerializeField] GameObject[] IceCreamSauces;
     [SerializeField] GameObject[] IceCreamToppings;
-    private List<int> needFlavours = new List<int>();
-    private List<int> needSauces = new List<int>();
-    private List<int> needToppings = new List<int>();
 
     [Space(10)]
     [Header("Dialogue")]
@@ -22,14 +22,26 @@ public class Customer : MonoBehaviour
     [SerializeField] GameObject ConeObject;
     [SerializeField] float ObjectOffset;
     [SerializeField] Transform TimerTransform;
+
+    [Space]
+    [SerializeField] float MinTime;
+    [SerializeField] float MaxTime;
+
+    float TotalTime;
     float RandomTimeDuration;
+    float Interval = 1f;
+
+    [Space(10)]
+    [SerializeField] List<int> GeneratedFlavours = new List<int>();
+    [SerializeField] List<int> GeneratedSauces = new List<int>();
+    [SerializeField] List<int> GeneratedToppings = new List<int>();
 
     List<GameObject> GeneratedIceCream = new List<GameObject>();
 
     void GenerateSlime()
     {
         int RandomSlime = Random.Range(0, SlimeBreeds.Length - 1);
-        Instantiate(SlimeBreeds[RandomSlime], SlimePosition, Quaternion.identity, transform);
+        CurrentSlime = Instantiate(SlimeBreeds[RandomSlime], new Vector3(SlimePosition.x, SlimePosition.y, 1f), Quaternion.identity, transform);
     }
 
     void GenerateIceCream()
@@ -39,31 +51,25 @@ public class Customer : MonoBehaviour
 
         for (int i = 0; i < RandomScoopCount; i++)
         {
-            int RandomFlavour = Random.Range(0, IceCreamFlavours.Length);
+            int RandomFlavour = Random.Range(0, IceCreamFlavours.Length - 1);
+            GeneratedFlavours.Add(RandomFlavour);
             GeneratedIceCream.Add(IceCreamFlavours[RandomFlavour]);
-
-            // Add the index of the flavor to the needFlavours list
-            needFlavours.Add(RandomFlavour);
         }
 
         bool AddSauce = Random.value > 0.5f;
         if (AddSauce)
         {
-            int RandomSauce = Random.Range(0, IceCreamSauces.Length);
+            int RandomSauce = Random.Range(0, IceCreamSauces.Length - 1);
+            GeneratedSauces.Add(RandomSauce);
             GeneratedIceCream.Add(IceCreamSauces[RandomSauce]);
-
-            // Add the index of the sauce to the needSauces list
-            needSauces.Add(IceCreamFlavours.Length + RandomSauce);
         }
 
         bool AddToppings = Random.value > 0.5f;
         if (AddToppings)
         {
-            int RandomToppings = Random.Range(0, IceCreamToppings.Length);
+            int RandomToppings = Random.Range(0, IceCreamToppings.Length - 1);
+            GeneratedToppings.Add(RandomToppings);
             GeneratedIceCream.Add(IceCreamToppings[RandomToppings]);
-
-            // Add the index of the topping to the needToppings list
-            needToppings.Add(IceCreamFlavours.Length + IceCreamSauces.Length + RandomToppings);
         }
     }
 
@@ -80,27 +86,44 @@ public class Customer : MonoBehaviour
 
     void GenerateTimer()
     {
-        RandomTimeDuration = Random.Range(3f, 5f);
+        RandomTimeDuration = Random.Range(MinTime, MaxTime);
+        TotalTime = Time.time + RandomTimeDuration;
     }
 
     void UpdateTimer()
     {
-        TimerTransform.rotation = Quaternion.Euler(TimerTransform.rotation.eulerAngles + (Vector3.right * 360 / RandomTimeDuration * Time.deltaTime));
+        if(Time.time >= TotalTime) {
+            return;
+        }
+
+        if((TotalTime - Time.time) % (RandomTimeDuration / 5) == 0f) {
+            Interval += 1;
+            string Name = CurrentSlime.name + "_" + Interval.ToString();
+            string PreviousName = CurrentSlime.name + "_" + (Interval - 1).ToString();
+
+            Name = Name.Replace("(Clone)", "");
+            PreviousName = PreviousName.Replace("(Clone)", "");
+
+            Debug.Log(Name);
+
+            CurrentSlime.transform.Find(PreviousName).GetComponent<SpriteRenderer>().enabled = false;
+            CurrentSlime.transform.Find(Name).GetComponent<SpriteRenderer>().enabled = true;
+        }
+        TimerTransform.rotation = Quaternion.Euler(TimerTransform.rotation.eulerAngles + (Vector3.forward * 180 / RandomTimeDuration * Time.deltaTime));
     }
 
     void OnCollisionEnter2D(Collision2D Hitbox)
     {
-        Debug.Log("Test");
         if (Hitbox.gameObject.CompareTag("IceCream"))
         {
             // Check the ice cream here
-            List<int> receivedFlavors = FindObjectOfType<ItemController>().flavors;
-            List<int> receivedSauces = FindObjectOfType<ItemController>().sauces;
-            List<int> receivedToppings = FindObjectOfType<ItemController>().toppings;
+            List<int> ReceivedFlavors = FindObjectOfType<ItemController>().flavors;
+            List<int> ReceivedSauces = FindObjectOfType<ItemController>().sauces;
+            List<int> ReceivedToppings = FindObjectOfType<ItemController>().toppings;
 
-            bool isCorrect = CheckIceCreamCombination(receivedFlavors, receivedSauces, receivedToppings);
+            bool IsCorrect = CheckIceCreamCombination(ReceivedFlavors, ReceivedSauces, ReceivedToppings);
 
-            if (isCorrect)
+            if (IsCorrect)
             {
                 Debug.Log("Ice cream is correct!");
             }
@@ -111,24 +134,31 @@ public class Customer : MonoBehaviour
         }
     }
 
-    bool CheckIceCreamCombination(List<int> flavors, List<int> sauces, List<int> toppings)
+    bool CheckIceCreamCombination(List<int> Flavors, List<int> Sauces, List<int> Toppings)
     {
-        Debug.Log(flavors[0]);
-        Debug.Log(flavors[1]);
-        Debug.Log(flavors[2]);
-        Debug.Log(needFlavours[0]);
-        Debug.Log(needFlavours[1]);
-        Debug.Log(needFlavours[2]);
-        Debug.Log(sauces[0]);
-        Debug.Log(needSauces[0]);
-        Debug.Log(toppings[0]);
-        Debug.Log(needToppings[0]);
-        if (flavors[0] == needFlavours[0] && flavors[1] == needFlavours[1] && flavors[2] == needFlavours[2] && sauces[0] == needSauces[0] && toppings[0] == needToppings[0])
-        {
-            return true;
+        if(Flavors.Count != GeneratedFlavours.Count || Sauces.Count != GeneratedSauces.Count ||  Toppings.Count != GeneratedToppings.Count) {
+            return false;
         }
-        // Return true if the combination is correct, false otherwise
-        return false; // Placeholder return value
+
+        for(int i = 0; i < Flavors.Count; i ++) {
+            if(Flavors[i] != GeneratedFlavours[i]) {
+                return false;
+            }
+        }
+
+        for(int i = 0; i < Sauces.Count; i ++) {
+            if(Sauces[i] != GeneratedSauces[i]) {
+                return false;
+            }
+        }
+
+        for(int i = 0; i < Toppings.Count; i ++) {
+            if(Toppings[i] != GeneratedToppings[i]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     void Update()
