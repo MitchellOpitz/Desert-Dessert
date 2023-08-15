@@ -33,9 +33,9 @@ public class ItemController : MonoBehaviour
     private int maxFlavors = 3;
     private int currentFlavorCount = 0;
 
-    private List<int> flavors = new List<int>();
-    private List<int> sauces = new List<int>();
-    private List<int> toppings = new List<int>();
+    public List<int> flavors = new List<int>();
+    public List<int> sauces = new List<int>();
+    public List<int> toppings = new List<int>();
 
     private void OnEnable()
     {

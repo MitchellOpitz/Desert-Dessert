@@ -21,6 +21,7 @@ public class DayNightCycle : MonoBehaviour
     private void Awake()
     {
         backdrop = GetComponent<SpriteRenderer>();
+        endGameScreen.SetActive(false);
     }
 
     private void Update()
