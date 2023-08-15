@@ -139,7 +139,7 @@ public class ItemController : MonoBehaviour
     {
         if (context.performed && !chosenSauce && canMoveOntoNextItem)
         {
-          int chosenSauceIndex = GetChosenSauceIndex();
+            int chosenSauceIndex = GetChosenSauceIndex();
             FindObjectOfType<AudioManager>().PlaySound("DropSyrup");
             if (chosenSauceIndex != -1)
             {
@@ -196,7 +196,7 @@ public class ItemController : MonoBehaviour
 
     private void ChooseTopping(int toppingIndex)
     {
-       if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
+        if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
         {
             toppings.Add(toppingIndex);
 
@@ -285,7 +285,7 @@ public class ItemController : MonoBehaviour
     {
         if (itemPrefab == null || itemTransform == null)
             return;
-       
+
         if (itemTransform.childCount == 0)
         {
             GameObject item = Instantiate(itemPrefab, itemTransform.position, Quaternion.identity);
@@ -320,4 +320,6 @@ public class ItemController : MonoBehaviour
     }
 
     #endregion
+
+
 }

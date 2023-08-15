@@ -11,6 +11,9 @@ public class Customer : MonoBehaviour
     [SerializeField] GameObject[] IceCreamFlavours;
     [SerializeField] GameObject[] IceCreamSauces;
     [SerializeField] GameObject[] IceCreamToppings;
+    private List<int> needFlavours = new List<int>();
+    private List<int> needSauces = new List<int>();
+    private List<int> needToppings = new List<int>();
 
     [Space(10)]
     [Header("Dialogue")]
@@ -36,22 +39,31 @@ public class Customer : MonoBehaviour
 
         for (int i = 0; i < RandomScoopCount; i++)
         {
-            int RandomFlavour = Random.Range(0, IceCreamFlavours.Length - 1);
+            int RandomFlavour = Random.Range(0, IceCreamFlavours.Length);
             GeneratedIceCream.Add(IceCreamFlavours[RandomFlavour]);
+
+            // Add the index of the flavor to the needFlavours list
+            needFlavours.Add(RandomFlavour);
         }
 
         bool AddSauce = Random.value > 0.5f;
         if (AddSauce)
         {
-            int RandomSauce = Random.Range(0, IceCreamSauces.Length - 1);
+            int RandomSauce = Random.Range(0, IceCreamSauces.Length);
             GeneratedIceCream.Add(IceCreamSauces[RandomSauce]);
+
+            // Add the index of the sauce to the needSauces list
+            needSauces.Add(IceCreamFlavours.Length + RandomSauce);
         }
 
         bool AddToppings = Random.value > 0.5f;
         if (AddToppings)
         {
-            int RandomToppings = Random.Range(0, IceCreamToppings.Length - 1);
+            int RandomToppings = Random.Range(0, IceCreamToppings.Length);
             GeneratedIceCream.Add(IceCreamToppings[RandomToppings]);
+
+            // Add the index of the topping to the needToppings list
+            needToppings.Add(IceCreamFlavours.Length + IceCreamSauces.Length + RandomToppings);
         }
     }
 
@@ -76,14 +88,15 @@ public class Customer : MonoBehaviour
         TimerTransform.rotation = Quaternion.Euler(TimerTransform.rotation.eulerAngles + (Vector3.right * 360 / RandomTimeDuration * Time.deltaTime));
     }
 
-    void OnEnterCollision2D(Collision2D Hitbox)
+    void OnCollisionEnter2D(Collision2D Hitbox)
     {
+        Debug.Log("Test");
         if (Hitbox.gameObject.CompareTag("IceCream"))
         {
             // Check the ice cream here
-            List<int> receivedFlavors = Hitbox.gameObject.GetComponent<ItemController>().flavors;
-            List<int> receivedSauces = Hitbox.gameObject.GetComponent<ItemController>().sauces;
-            List<int> receivedToppings = Hitbox.gameObject.GetComponent<ItemController>().toppings;
+            List<int> receivedFlavors = FindObjectOfType<ItemController>().flavors;
+            List<int> receivedSauces = FindObjectOfType<ItemController>().sauces;
+            List<int> receivedToppings = FindObjectOfType<ItemController>().toppings;
 
             bool isCorrect = CheckIceCreamCombination(receivedFlavors, receivedSauces, receivedToppings);
 
@@ -100,7 +113,20 @@ public class Customer : MonoBehaviour
 
     bool CheckIceCreamCombination(List<int> flavors, List<int> sauces, List<int> toppings)
     {
-        // Implement your logic to check the ice cream combination
+        Debug.Log(flavors[0]);
+        Debug.Log(flavors[1]);
+        Debug.Log(flavors[2]);
+        Debug.Log(needFlavours[0]);
+        Debug.Log(needFlavours[1]);
+        Debug.Log(needFlavours[2]);
+        Debug.Log(sauces[0]);
+        Debug.Log(needSauces[0]);
+        Debug.Log(toppings[0]);
+        Debug.Log(needToppings[0]);
+        if (flavors[0] == needFlavours[0] && flavors[1] == needFlavours[1] && flavors[2] == needFlavours[2] && sauces[0] == needSauces[0] && toppings[0] == needToppings[0])
+        {
+            return true;
+        }
         // Return true if the combination is correct, false otherwise
         return false; // Placeholder return value
     }
