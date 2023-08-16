@@ -90,8 +90,8 @@ MonoBehaviour:
   ConeObject: {fileID: 2760363997764041742}
   ObjectOffset: 0.1
   TimerTransform: {fileID: 2760363997624719971}
-  MinTime: 1
-  MaxTime: 2
+  MinTime: 6
+  MaxTime: 10
   ScoreManager: {fileID: 0}
   GeneratedFlavours: 
   GeneratedSauces: 
