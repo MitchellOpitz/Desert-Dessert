@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcebe661805cd441b99c445bc5347bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomerPrefab: {fileID: 2760363996516909840}
   SlimeBreeds:
   - {fileID: 4582347976733319259, guid: 97fec86466041aa4e8ff0d6143578f10, type: 3}
   - {fileID: 2460490294223503373, guid: cb4c292780297574e919503df259ed76, type: 3}
@@ -87,12 +86,13 @@ MonoBehaviour:
   - {fileID: 8155897571264332544, guid: b75d3482f5b68814696b269270ec8118, type: 3}
   - {fileID: 6586019588735971737, guid: 14d432707e29c1742b53b2dea1ac67c6, type: 3}
   SlimePosition: {x: -5, y: 1.5}
-  ConePosition: {x: -3, y: 3}
+  ConePosition: {x: -3, y: 4}
   ConeObject: {fileID: 2760363997764041742}
   ObjectOffset: 0.1
   TimerTransform: {fileID: 2760363997624719971}
   MinTime: 1
   MaxTime: 2
+  ScoreManager: {fileID: 0}
   GeneratedFlavours: 
   GeneratedSauces: 
   GeneratedToppings: 
@@ -229,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2760363997764041742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 3, z: 0}
+  m_LocalPosition: {x: 2.5, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3516646416850486662}

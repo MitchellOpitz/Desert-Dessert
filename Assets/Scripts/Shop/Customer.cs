@@ -7,7 +7,6 @@ using UnityEngine.Jobs;
 public class Customer : MonoBehaviour
 {
     [Header("Prefabs")]
-    [SerializeField] GameObject CustomerPrefab;
     [SerializeField] GameObject[] SlimeBreeds;
     GameObject CurrentSlime;
 
@@ -79,13 +78,23 @@ public class Customer : MonoBehaviour
     void DisplayIceCream()
     {
         Vector2 CurrentPosition = ConePosition;
+        int SortingOrder = 0; // Start sorting order
 
         foreach (GameObject Object in GeneratedIceCream)
         {
             GameObject NewIceCreamPart = Instantiate(Object, CurrentPosition, Quaternion.identity, ConeObject.transform);
+            SpriteRenderer Renderer = NewIceCreamPart.GetComponent<SpriteRenderer>();
+
+            if (Renderer != null)
+            {
+                Renderer.sortingOrder = SortingOrder;
+                SortingOrder++;
+            }
+
             CurrentPosition.y += ObjectOffset;
         }
     }
+
 
     void GenerateTimer()
     {
@@ -96,9 +105,7 @@ public class Customer : MonoBehaviour
     void UpdateTimer()
     {
         if(Time.time >= TotalTime) {
-            transform.gameObject.SetActive(false);
-            Instantiate(CustomerPrefab, transform.position, transform.rotation);
-            Destroy(transform.gameObject);
+            FindObjectOfType<CustomerManager>().ReplaceCustomer(transform.gameObject);
         }
 
         TimerTransform.rotation = Quaternion.Euler(TimerTransform.rotation.eulerAngles + (Vector3.forward * 180 / RandomTimeDuration * Time.deltaTime));
@@ -117,11 +124,7 @@ public class Customer : MonoBehaviour
 
             if (IsCorrect)
             {
-                transform.gameObject.SetActive(false);
-                Destroy(Hitbox.gameObject);
-                ScoreManager.GetComponent<ScoreManager>().ChangeScore(10);
-                Instantiate(CustomerPrefab, transform.position, transform.rotation);
-                Destroy(transform.gameObject);
+                FindObjectOfType<CustomerManager>().ReplaceCustomer(transform.gameObject);
             }
             else
             {

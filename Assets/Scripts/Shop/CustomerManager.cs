@@ -1,37 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CustomerManager : MonoBehaviour
 {
     [SerializeField] GameObject CustomerPrefab;
-    [SerializeField] Transform CustomerPositions;
+    [SerializeField] Transform[] CustomerPositions;
 
-    private List<GameObject> ActiveCustomers = new List<GameObject>();
+    private List<Transform> ActiveCustomers = new List<Transform>();
 
-    void Start()
-    {
-        CreateInitialCustomers();
-    }
+    public void ReplaceCustomer(GameObject CustomerObject) {
+        ActiveCustomers.Remove(CustomerObject.transform);
+        Destroy(CustomerObject);
 
-    void Update()
-    {
-        UpdateCustomerPositions();
-    }
-
-    void CreateInitialCustomers()
-    {
-        GameObject Customer = Instantiate(CustomerPrefab, CustomerPositions.position, Quaternion.identity);
-        ActiveCustomers[0] = Customer;
-    }
-
-    void UpdateCustomerPositions()
-    {
-        Debug.Log(ActiveCustomers[0].activeInHierarchy);
-        if (ActiveCustomers[0] == null)
-        {
-            GameObject Customer = Instantiate(CustomerPrefab, CustomerPositions.position, Quaternion.identity);
-            ActiveCustomers[0] = Customer;
+        foreach(Transform CustomerTransform in CustomerPositions) {
+            if(ActiveCustomers.Contains(CustomerTransform)) {
+                continue;
+            }
+            Instantiate(CustomerPrefab, CustomerTransform.position, CustomerTransform.rotation);
+            ActiveCustomers.Add(CustomerTransform);
         }
     }
 }

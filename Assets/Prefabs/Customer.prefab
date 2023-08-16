@@ -92,6 +92,7 @@ MonoBehaviour:
   TimerTransform: {fileID: 4812943986568422855}
   MinTime: 3
   MaxTime: 5
+  ScoreManager: {fileID: 0}
   GeneratedFlavours: 
   GeneratedSauces: 
   GeneratedToppings: 
