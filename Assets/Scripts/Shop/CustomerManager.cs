@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -9,17 +8,49 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] Transform[] CustomerPositions;
 
     private List<Transform> ActiveCustomers = new List<Transform>();
+    private int CurrentPositionIndex = 0;
 
-    public void ReplaceCustomer(GameObject CustomerObject) {
-        ActiveCustomers.Remove(CustomerObject.transform);
-        Destroy(CustomerObject);
+    private void Start()
+    {
+        SpawnInitialCustomers();
+    }
 
-        foreach(Transform CustomerTransform in CustomerPositions) {
-            if(ActiveCustomers.Contains(CustomerTransform)) {
-                continue;
-            }
-            Instantiate(CustomerPrefab, CustomerTransform.position, CustomerTransform.rotation);
-            ActiveCustomers.Add(CustomerTransform);
+    private void SpawnInitialCustomers()
+    {
+        foreach (Transform CustomerTransform in CustomerPositions)
+        {
+            InstantiateCustomer(CustomerTransform);
         }
+    }
+
+    private void InstantiateCustomer(Transform SpawnTransform)
+    {
+        GameObject NewCustomer = Instantiate(CustomerPrefab, SpawnTransform.position, SpawnTransform.rotation);
+        ActiveCustomers.Add(NewCustomer.transform);
+    }
+
+    public void ReplaceCustomer(GameObject CustomerObject)
+    {
+        ActiveCustomers.Remove(CustomerObject.transform);
+        StartCoroutine(SwitchCustomers(CustomerObject));
+    }
+
+    private IEnumerator SwitchCustomers(GameObject OutgoingCustomer)
+    {
+        //Animator OutgoingAnimator = OutgoingCustomer.GetComponent<Animator>();
+        //OutgoingAnimator.SetTrigger("WalkOut");
+
+        yield return new WaitForSeconds(1.0f); // Adjust the duration based on your animation
+
+        Destroy(OutgoingCustomer);
+
+        Transform NextSpawnTransform = CustomerPositions[CurrentPositionIndex];
+        GameObject NewCustomer = Instantiate(CustomerPrefab, NextSpawnTransform.position, NextSpawnTransform.rotation);
+        ActiveCustomers.Add(NewCustomer.transform);
+
+        //Animator NewAnimator = NewCustomer.GetComponent<Animator>();
+        //NewAnimator.SetTrigger("WalkIn");
+
+        CurrentPositionIndex = (CurrentPositionIndex + 1) % CustomerPositions.Length;
     }
 }

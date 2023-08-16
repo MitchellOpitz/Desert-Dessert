@@ -29,7 +29,9 @@ public class Customer : MonoBehaviour
 
     float TotalTime;
     float RandomTimeDuration;
-    float Interval = 1f;
+    int SlimeNumber = 0;
+    bool TimeChecked = false;
+    bool SlimeMeltStateUpdated = false;
 
     [SerializeField] GameObject ScoreManager;
 
@@ -100,15 +102,30 @@ public class Customer : MonoBehaviour
     {
         RandomTimeDuration = Random.Range(MinTime, MaxTime);
         TotalTime = Time.time + RandomTimeDuration;
+        TimeChecked = false;
     }
 
     void UpdateTimer()
     {
-        if(Time.time >= TotalTime) {
+        if(TotalTime - Time.time <= 0 && !TimeChecked) {
+            TimeChecked = true;
             FindObjectOfType<CustomerManager>().ReplaceCustomer(transform.gameObject);
         }
 
         TimerTransform.rotation = Quaternion.Euler(TimerTransform.rotation.eulerAngles + (Vector3.forward * 180 / RandomTimeDuration * Time.deltaTime));
+
+        Debug.Log((TotalTime - Time.time) % (RandomTimeDuration / 5));
+        if((Time.time - (Time.time - TotalTime)) % (TotalTime / 5) <= 0.1f && !SlimeMeltStateUpdated) {
+            CurrentSlime.transform.GetChild(SlimeNumber).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            SlimeNumber ++;
+            CurrentSlime.transform.GetChild(SlimeNumber).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+            SlimeMeltStateUpdated = true;
+        }
+
+        if(!SlimeMeltStateUpdated && (Time.time - (Time.time - TotalTime)) % (TotalTime / 5) <= 0.1f) {
+            SlimeMeltStateUpdated = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D Hitbox)
@@ -126,6 +143,7 @@ public class Customer : MonoBehaviour
             {
                 Destroy(Hitbox.gameObject);
                 FindObjectOfType<CustomerManager>().ReplaceCustomer(transform.gameObject);
+                IsCorrect = false;
             }
             else
             {
