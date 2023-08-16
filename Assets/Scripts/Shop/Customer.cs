@@ -124,6 +124,7 @@ public class Customer : MonoBehaviour
 
             if (IsCorrect)
             {
+                Destroy(Hitbox.gameObject);
                 FindObjectOfType<CustomerManager>().ReplaceCustomer(transform.gameObject);
             }
             else
