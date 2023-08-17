@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CustomerControllerTest : MonoBehaviour
@@ -23,8 +25,8 @@ public class CustomerControllerTest : MonoBehaviour
     [SerializeField] private Sprite[] sauceSprites;
     [SerializeField] private Sprite[] toppingSprites;
 
-    [SerializeField] private float minTime = 5f;
-    [SerializeField] private float maxTime = 8f;
+    [SerializeField] private float minTime = 20f;
+    [SerializeField] private float maxTime = 30f;
 
     private float timer = 0f;
     private float randomTime;
@@ -57,18 +59,18 @@ public class CustomerControllerTest : MonoBehaviour
 
     private void SpawnRandomCustomer()
     {
-        currentCustomerIndex = Random.Range(0, possibleCustomers.Length);
+        currentCustomerIndex = UnityEngine.Random.Range(0, possibleCustomers.Length);
         CustomerSO randomCustomer = possibleCustomers[currentCustomerIndex];
         currentCustomerObject = Instantiate(randomCustomer.prefab, spawnPosition.position, Quaternion.identity);
         currentSpriteIndex = 0;
         currentSpriteRenderer = currentCustomerObject.GetComponent<SpriteRenderer>();
         currentSpriteRenderer.sprite = randomCustomer.sprites[currentSpriteIndex];
-        randomTime = Random.Range(minTime, maxTime);
+        randomTime = UnityEngine.Random.Range(minTime, maxTime);
 
         GenerateRandomOrder();
     }
 
-    private void SpawnNextCustomer()
+    public void SpawnNextCustomer()
     {
         Destroy(currentCustomerObject);
         SpawnRandomCustomer();
@@ -96,31 +98,31 @@ public class CustomerControllerTest : MonoBehaviour
     {
         InitializeSpriteRenderers(cone);
 
-        int randomScoopCount = Random.Range(1, 4);
+        int randomScoopCount = UnityEngine.Random.Range(1, 4);
 
         for (int i = 0; i < randomScoopCount; i++)
         {
-            Sprite randomFlavor = flavorSprites[Random.Range(0, flavorSprites.Length)];
+            Sprite randomFlavor = flavorSprites[UnityEngine.Random.Range(0, flavorSprites.Length)];
             if (randomScoopCount == 1)
                 coneSpriteRenderers[0].sprite = randomFlavor;
             else if (randomScoopCount == 2)
             {
-                coneSpriteRenderers[0].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
-                coneSpriteRenderers[1].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[0].sprite = flavorSprites[UnityEngine.Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[1].sprite = flavorSprites[UnityEngine.Random.Range(0, flavorSprites.Length)];
             }
             else
             {
-                coneSpriteRenderers[0].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
-                coneSpriteRenderers[1].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
-                coneSpriteRenderers[2].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[0].sprite = flavorSprites[UnityEngine.Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[1].sprite = flavorSprites[UnityEngine.Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[2].sprite = flavorSprites[UnityEngine.Random.Range(0, flavorSprites.Length)];
             }
         }
 
-        bool addSauce = Random.value > 0.5f;
+        bool addSauce = UnityEngine.Random.value > 0.5f;
 
         if (addSauce)
         {
-            Sprite randomSauce = sauceSprites[Random.Range(0, sauceSprites.Length)];
+            Sprite randomSauce = sauceSprites[UnityEngine.Random.Range(0, sauceSprites.Length)];
             if (randomScoopCount == 1)
                 coneSpriteRenderers[3].sprite = randomSauce;
             else if (randomScoopCount == 2)
@@ -129,11 +131,11 @@ public class CustomerControllerTest : MonoBehaviour
                 coneSpriteRenderers[5].sprite = randomSauce;
         }
 
-        bool addToppings = Random.value > 0.5f;
+        bool addToppings = UnityEngine.Random.value > 0.5f;
 
         if (addToppings)
         {
-            Sprite randomTopping = toppingSprites[Random.Range(0, toppingSprites.Length)];
+            Sprite randomTopping = toppingSprites[UnityEngine.Random.Range(0, toppingSprites.Length)];
             if (randomScoopCount == 1)
                 coneSpriteRenderers[6].sprite = randomTopping;
             else if (randomScoopCount == 2)
@@ -141,8 +143,6 @@ public class CustomerControllerTest : MonoBehaviour
             else
                 coneSpriteRenderers[8].sprite = randomTopping;
         }
-
-        Debug.Log(randomScoopCount);
     }
 
     public void InitializeSpriteRenderers(GameObject item)
@@ -154,5 +154,31 @@ public class CustomerControllerTest : MonoBehaviour
             coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
             coneSpriteRenderers[i].sprite = null;
         }
+    }
+
+    public bool CheckIfOrderCorrect()
+    {
+        List<int> customerFlavors = new List<int>();
+        List<int> customerSauces = new List<int>();
+        List<int> customerToppings = new List<int>();
+
+        for (int i = 0; i < coneSpriteRenderers.Length; i++)
+        {
+            if (coneSpriteRenderers[i].sprite != null)
+            {
+                if (i < 3)
+                    customerFlavors.Add(Array.IndexOf(flavorSprites, coneSpriteRenderers[i].sprite));
+                else if (i >= 3 && i < 6)
+                    customerSauces.Add(Array.IndexOf(sauceSprites, coneSpriteRenderers[i].sprite));
+                else
+                    customerToppings.Add(Array.IndexOf(toppingSprites, coneSpriteRenderers[i].sprite));
+            }
+        }
+
+        bool flavorsMatch = Enumerable.SequenceEqual(customerFlavors.OrderBy(x => x), itemController.flavors.OrderBy(x => x));
+        bool saucesMatch = Enumerable.SequenceEqual(customerSauces.OrderBy(x => x), itemController.sauces.OrderBy(x => x));
+        bool toppingsMatch = Enumerable.SequenceEqual(customerToppings.OrderBy(x => x), itemController.toppings.OrderBy(x => x));
+
+        return flavorsMatch && saucesMatch && toppingsMatch;
     }
 }

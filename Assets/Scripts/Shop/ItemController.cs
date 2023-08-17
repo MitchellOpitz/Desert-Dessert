@@ -6,6 +6,7 @@ public class ItemController : MonoBehaviour
 {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private MouseCursor mouseCursor;
+    [SerializeField] private CustomerControllerTest customerController;
 
     [Header("Input Action References"), Space(10)]
     [SerializeField] private InputActionReference chooseConeAction;
@@ -16,6 +17,7 @@ public class ItemController : MonoBehaviour
     [Header("Transforms"), Space(10)]
     [SerializeField] private Transform placeConeTransform;
     [SerializeField] private Transform trashTransform;
+    [SerializeField] private Transform customerServeTransform;
 
     [Header("Sprites"), Space(10)]
     [SerializeField] private Sprite[] flavorSprites;
@@ -243,6 +245,11 @@ public class ItemController : MonoBehaviour
 
             if (mouseCursor.IsCursorOverTransform(trashTransform))
                 Destroy(currentItem);
+            else if (mouseCursor.IsCursorOverTransform(customerServeTransform) && customerController.CheckIfOrderCorrect())
+            {
+                customerController.SpawnNextCustomer();
+                Destroy(currentItem);
+            }
             else
             {
                 currentItem.transform.SetParent(placeConeTransform);
