@@ -30,7 +30,8 @@ public class ItemController : MonoBehaviour
     private bool chosenTopping;
     private bool canMoveOntoNextItem;
 
-    private int maxFlavors = 3;
+    public int maxFlavors = 3;
+    
     private int currentFlavorCount = 0;
 
     public List<int> flavors = new List<int>();
@@ -106,7 +107,7 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private void ChooseFlavor(int flavorIndex)
+    public void ChooseFlavor(int flavorIndex)
     {
         if (currentFlavorCount < maxFlavors)
         {
@@ -149,7 +150,7 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private void ChooseSauce(int sauceIndex)
+    public void ChooseSauce(int sauceIndex)
     {
         if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
         {
@@ -194,7 +195,7 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private void ChooseTopping(int toppingIndex)
+    public void ChooseTopping(int toppingIndex)
     {
         if (currentFlavorCount >= 1 && currentFlavorCount <= maxFlavors)
         {
@@ -296,7 +297,7 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private void InitializeSpriteRenderers(GameObject item)
+    public void InitializeSpriteRenderers(GameObject item)
     {
         coneSpriteRenderers = new SpriteRenderer[9];
 
@@ -320,6 +321,4 @@ public class ItemController : MonoBehaviour
     }
 
     #endregion
-
-
 }
