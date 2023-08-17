@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0ef787f8d27e8448bef1958c720871, type: 3}
+  m_Name: YellowSlime
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8838231240324088548, guid: 2a2c3b3ffa6c75d4d9659bb1826f7077, type: 3}
+  spriteRenderer: {fileID: 8838231240324088555, guid: 2a2c3b3ffa6c75d4d9659bb1826f7077, type: 3}
+  sprites:
+  - {fileID: -4679537068152204332, guid: 7b58e9d9a4565e648bf1a2bc0d6eb164, type: 3}
+  - {fileID: -4966110825831077755, guid: 7b58e9d9a4565e648bf1a2bc0d6eb164, type: 3}
+  - {fileID: -5957460801185914797, guid: 7b58e9d9a4565e648bf1a2bc0d6eb164, type: 3}
+  - {fileID: -3324844538857864697, guid: 7b58e9d9a4565e648bf1a2bc0d6eb164, type: 3}

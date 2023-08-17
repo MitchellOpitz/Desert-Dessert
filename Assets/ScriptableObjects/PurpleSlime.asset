@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0ef787f8d27e8448bef1958c720871, type: 3}
+  m_Name: PurpleSlime
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8838231240324088548, guid: 778f1c5ed8bfe3f4e911e85b21f50230, type: 3}
+  spriteRenderer: {fileID: 8838231240324088555, guid: 778f1c5ed8bfe3f4e911e85b21f50230, type: 3}
+  sprites:
+  - {fileID: 1365969985420302811, guid: a379d9941f63abc4fb7e98187c40b38d, type: 3}
+  - {fileID: -8940667637512408654, guid: a379d9941f63abc4fb7e98187c40b38d, type: 3}
+  - {fileID: 4016654698688776425, guid: a379d9941f63abc4fb7e98187c40b38d, type: 3}
+  - {fileID: -2321515657721132188, guid: a379d9941f63abc4fb7e98187c40b38d, type: 3}
