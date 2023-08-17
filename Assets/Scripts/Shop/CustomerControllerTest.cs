@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CustomerControllerTest : MonoBehaviour
 {
+    [SerializeField] private ItemController itemController;
+
     [SerializeField] private CustomerSO[] possibleCustomers;
     [SerializeField] private Transform spawnPosition;
     private GameObject currentCustomerObject;
@@ -11,15 +13,31 @@ public class CustomerControllerTest : MonoBehaviour
     private int currentSpriteIndex = 0;
     private int currentCustomerIndex = 0;
 
-    [SerializeField] private float MinTime = 5f;
-    [SerializeField] private float MaxTime = 8f;
+    [SerializeField] private GameObject orderPanel;
+    [SerializeField] private GameObject timerIcon;
+    [SerializeField] private GameObject cone;
+    private SpriteRenderer[] coneSpriteRenderers;
+
+    [Header("Sprites"), Space(10)]
+    [SerializeField] private Sprite[] flavorSprites;
+    [SerializeField] private Sprite[] sauceSprites;
+    [SerializeField] private Sprite[] toppingSprites;
+
+    [SerializeField] private float minTime = 5f;
+    [SerializeField] private float maxTime = 8f;
 
     private float timer = 0f;
     private float randomTime;
 
+    private void Awake()
+    {
+        InitializeSpriteRenderers(cone);
+    }
+
     private void Start()
     {
         SpawnRandomCustomer();
+        orderPanel.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -45,18 +63,15 @@ public class CustomerControllerTest : MonoBehaviour
         currentSpriteIndex = 0;
         currentSpriteRenderer = currentCustomerObject.GetComponent<SpriteRenderer>();
         currentSpriteRenderer.sprite = randomCustomer.sprites[currentSpriteIndex];
-        randomTime = Random.Range(MinTime, MaxTime);
+        randomTime = Random.Range(minTime, maxTime);
+
+        GenerateRandomOrder();
     }
 
     private void SpawnNextCustomer()
     {
         Destroy(currentCustomerObject);
         SpawnRandomCustomer();
-    }
-
-    private Sprite[] GetSpritesForCurrentCustomer()
-    {
-        return possibleCustomers[currentCustomerIndex].sprites;
     }
 
     private void SetNextSprite()
@@ -75,5 +90,69 @@ public class CustomerControllerTest : MonoBehaviour
             currentSpriteIndex = 3;
 
         currentSpriteRenderer.sprite = possibleCustomers[currentCustomerIndex].sprites[currentSpriteIndex];
+    }
+
+    private void GenerateRandomOrder()
+    {
+        InitializeSpriteRenderers(cone);
+
+        int randomScoopCount = Random.Range(1, 4);
+
+        for (int i = 0; i < randomScoopCount; i++)
+        {
+            Sprite randomFlavor = flavorSprites[Random.Range(0, flavorSprites.Length)];
+            if (randomScoopCount == 1)
+                coneSpriteRenderers[0].sprite = randomFlavor;
+            else if (randomScoopCount == 2)
+            {
+                coneSpriteRenderers[0].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[1].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+            }
+            else
+            {
+                coneSpriteRenderers[0].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[1].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+                coneSpriteRenderers[2].sprite = flavorSprites[Random.Range(0, flavorSprites.Length)];
+            }
+        }
+
+        bool addSauce = Random.value > 0.5f;
+
+        if (addSauce)
+        {
+            Sprite randomSauce = sauceSprites[Random.Range(0, sauceSprites.Length)];
+            if (randomScoopCount == 1)
+                coneSpriteRenderers[3].sprite = randomSauce;
+            else if (randomScoopCount == 2)
+                coneSpriteRenderers[4].sprite = randomSauce;
+            else
+                coneSpriteRenderers[5].sprite = randomSauce;
+        }
+
+        bool addToppings = Random.value > 0.5f;
+
+        if (addToppings)
+        {
+            Sprite randomTopping = toppingSprites[Random.Range(0, toppingSprites.Length)];
+            if (randomScoopCount == 1)
+                coneSpriteRenderers[6].sprite = randomTopping;
+            else if (randomScoopCount == 2)
+                coneSpriteRenderers[7].sprite = randomTopping;
+            else
+                coneSpriteRenderers[8].sprite = randomTopping;
+        }
+
+        Debug.Log(randomScoopCount);
+    }
+
+    public void InitializeSpriteRenderers(GameObject item)
+    {
+        coneSpriteRenderers = new SpriteRenderer[9];
+
+        for (int i = 0; i < 9; i++)
+        {
+            coneSpriteRenderers[i] = item.transform.GetChild(i + 1).GetComponent<SpriteRenderer>();
+            coneSpriteRenderers[i].sprite = null;
+        }
     }
 }
