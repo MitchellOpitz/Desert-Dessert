@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0ef787f8d27e8448bef1958c720871, type: 3}
+  m_Name: BlueSlime
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8838231240324088548, guid: 150a765c7f40f5a4486faf0b7c445e2a, type: 3}
+  spriteRenderer: {fileID: 8838231240324088555, guid: 150a765c7f40f5a4486faf0b7c445e2a, type: 3}
+  sprites:
+  - {fileID: -8403912912354435786, guid: 0a6c0ee7c314fda49ab210f105ec5b98, type: 3}
+  - {fileID: 3753978272353456313, guid: 0a6c0ee7c314fda49ab210f105ec5b98, type: 3}
+  - {fileID: 3418527084011251722, guid: 0a6c0ee7c314fda49ab210f105ec5b98, type: 3}
+  - {fileID: 8676674996904116913, guid: 0a6c0ee7c314fda49ab210f105ec5b98, type: 3}

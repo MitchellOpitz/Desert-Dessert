@@ -188,16 +188,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3235036442558900347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 3235036442061875481}
   - {fileID: 3235036443650068480}
   - {fileID: 3235036442289271987}
-  - {fileID: 3235036443858729443}
-  - {fileID: 3235036442987853887}
   - {fileID: 3235036443955582693}
   - {fileID: 3235036442900135619}
+  - {fileID: 3235036443858729443}
+  - {fileID: 3235036442987853887}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 3235036442900135619}
   - component: {fileID: 3235036442900135618}
   m_Layer: 0
-  m_Name: YellowSlime_6
+  m_Name: YellowSlime_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3235036442558900346}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3235036442900135618
 SpriteRenderer:
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 3235036442987853887}
   - component: {fileID: 3235036442987853886}
   m_Layer: 0
-  m_Name: YellowSlime_4
+  m_Name: YellowSlime_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3235036442558900346}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3235036442987853886
 SpriteRenderer:
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 3235036443858729443}
   - component: {fileID: 3235036443858729442}
   m_Layer: 0
-  m_Name: YellowSlime_3
+  m_Name: YellowSlime_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,7 +476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3235036442558900346}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3235036443858729442
 SpriteRenderer:
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 3235036443955582693}
   - component: {fileID: 3235036443955582692}
   m_Layer: 0
-  m_Name: YellowSlime_5
+  m_Name: YellowSlime_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -558,7 +558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3235036442558900346}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3235036443955582692
 SpriteRenderer:

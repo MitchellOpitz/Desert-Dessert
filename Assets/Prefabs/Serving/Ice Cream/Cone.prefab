@@ -748,6 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622258105230548259}
   - component: {fileID: 1622258105230548258}
+  - component: {fileID: 569729483465367853}
   - component: {fileID: 3412855493210985583}
   m_Layer: 0
   m_Name: Cone
@@ -831,6 +832,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &569729483465367853
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622258105230548256}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &3412855493210985583
 BoxCollider2D:
   m_ObjectHideFlags: 0
