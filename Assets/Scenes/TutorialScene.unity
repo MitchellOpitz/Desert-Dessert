@@ -1108,7 +1108,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.14, g: 0.14, b: 0.14, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1248,6 +1248,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bffa95bf-2a9d-400a-9661-c3e952364f2b
     m_ActionName: Pause Button/New action[/Keyboard/escape,/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dae62575-070a-4c56-8d74-8b47a4b09b9d
+    m_ActionName: UIButtonOverlay/ShowControlOverlay[/Keyboard/tab,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Pause Button
@@ -4126,8 +4130,8 @@ MonoBehaviour:
     I may sound crazy, but desperate times call for desperate measures, Margret.
     Wish me luck."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e3bf0199a4c653045ad5bf7f085fb15b, type: 2}
-  m_sharedMaterial: {fileID: 8285597514520567619, guid: e3bf0199a4c653045ad5bf7f085fb15b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b0c207f5afa45048ab89db56299361a, type: 2}
+  m_sharedMaterial: {fileID: -8172764205556108102, guid: 5b0c207f5afa45048ab89db56299361a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4157,7 +4161,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -4583,7 +4587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 311.85, y: -525}
+  m_AnchoredPosition: {x: 311.85, y: -586}
   m_SizeDelta: {x: 623.69, y: 43.6547}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &9061243471585844899
@@ -5265,8 +5269,8 @@ MonoBehaviour:
     to help them stay frosty!\r\n\r\nThey even pay cash! I'm onto something Margaret,
     just you wait and see!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e3bf0199a4c653045ad5bf7f085fb15b, type: 2}
-  m_sharedMaterial: {fileID: 8285597514520567619, guid: e3bf0199a4c653045ad5bf7f085fb15b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b0c207f5afa45048ab89db56299361a, type: 2}
+  m_sharedMaterial: {fileID: -8172764205556108102, guid: 5b0c207f5afa45048ab89db56299361a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
