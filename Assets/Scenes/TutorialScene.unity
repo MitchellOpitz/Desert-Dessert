@@ -4119,8 +4119,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "07/15/20XX\r\nDear Margaret,\r\n\r\nI just couldn't take it anymore. The
-    jingle of the ice cream truck does not spark want children's eyes anymore, and
-    my pockets are empty because of it. I have nothing and need to do *something*.
+    jingle of the ice cream truck does not spark want in children's eyes anymore,
+    and my pockets are empty because of it. I have nothing and need to do *something*.
     So, I\u2019m going to take a leap of sorts. I am driving until I find a town
     where children still love their friendly neighborhood ice cream truck. I know
     I may sound crazy, but desperate times call for desperate measures, Margret.
@@ -5406,7 +5406,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 9061243471784754713}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.42698047
+  m_Size: 0.5677449
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
