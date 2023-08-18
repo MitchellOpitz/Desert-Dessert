@@ -28,6 +28,9 @@ public class CustomerControllerTest : MonoBehaviour
     [SerializeField] private float minTime = 20f;
     [SerializeField] private float maxTime = 30f;
 
+    [SerializeField] private ScoreManager scoreManager;
+    private float scoreMultiplier = 1.0f;
+
     private float timer = 0f;
     private float randomTime;
 
@@ -47,12 +50,10 @@ public class CustomerControllerTest : MonoBehaviour
         timer += Time.deltaTime;
 
         if (timer >= randomTime)
-        {
-            timer = 0f;
             SpawnNextCustomer();
-        }
         else
         {
+            scoreMultiplier = Mathf.Lerp(1.0f, 2.0f, 1.0f - timer / randomTime);
             SetNextSprite();
         }
     }
@@ -65,6 +66,7 @@ public class CustomerControllerTest : MonoBehaviour
         currentSpriteIndex = 0;
         currentSpriteRenderer = currentCustomerObject.GetComponent<SpriteRenderer>();
         currentSpriteRenderer.sprite = randomCustomer.sprites[currentSpriteIndex];
+        timer = 0f;
         randomTime = UnityEngine.Random.Range(minTime, maxTime);
 
         GenerateRandomOrder();
@@ -72,6 +74,12 @@ public class CustomerControllerTest : MonoBehaviour
 
     public void SpawnNextCustomer()
     {
+        if (CheckIfOrderCorrect())
+        {
+            int scoreModifier = Mathf.RoundToInt(scoreMultiplier * 2);
+            scoreManager.ChangeScore(scoreModifier);
+        }
+
         Destroy(currentCustomerObject);
         SpawnRandomCustomer();
     }

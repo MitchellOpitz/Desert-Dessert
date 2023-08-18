@@ -247,8 +247,9 @@ public class ItemController : MonoBehaviour
                 Destroy(currentItem);
             else if (mouseCursor.IsCursorOverTransform(customerServeTransform) && customerController.CheckIfOrderCorrect())
             {
-                customerController.SpawnNextCustomer();
                 Destroy(currentItem);
+                customerController.SpawnNextCustomer();
+
             }
             else
             {
